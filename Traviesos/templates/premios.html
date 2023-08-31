@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+crossorigin="anonymous"></script>
+<script src="//code.tidio.co/kczpks5iafw7sips7x6vfgjynam1qzs0.js" async></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="website icon" href="{% static 'image/image_home/home.png' %}">
+<title>Traviesos</title>
+</head>
+<body class="flex flex-col min-h-screen">
+  <header>
+  <nav class="bg-orange-200 container-fluid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+              <div class="flex items-center space-x-2">
+                <input type="text" class="flex-grow px-6 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300" placeholder="¿Qué deseas buscar?">
+                <span id="icon-search" class="px-3 py-2 text-white bg-orange-300 rounded-md hover:bg-orange-200 cursor-pointer"><i class="bi bi-search"></i></span>
+                <a href="carrito.html" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-cart-check-fill"></i></a>
+              </div>
+            <div class="flex items-center">
+              <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
+              <div class="hidden md:block">
+                <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
+                  <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a></li>
+                  <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a></li>
+                  <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+  </header>
+<main class="container my-2 text-justify mx-auto flex-grow">
+<div>
+    <h1 class="mt-4 fs-4 text-center">Catalogo de premios</h1>
+    <div class="mt-4 grid grid-cols-4 gap-4">
+        <div class="text-center border-1 p-6 rounded-md">
+            <h1 class="fs-5">Example product...</h1>
+            <img class="h-20 border-1 my-2" src="" alt="Example image">
+            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
+            <div class="text-right">
+                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
+            </div>
+        </div>
+        <div class="text-center border-1 p-6 rounded-md">
+            <h1 class="fs-5">Example product...</h1>
+            <img class="h-20 border-1 my-2" src="" alt="Example image">
+            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
+            <div class="text-right">
+                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
+            </div>
+        </div>
+        <div class="text-center border-1 p-6 rounded-md">
+            <h1 class="fs-5">Example product...</h1>
+            <img class="h-20 border-1 my-2" src="" alt="Example image">
+            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
+            <div class="text-right">
+                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
+            </div>
+        </div>
+        <div class="text-center border-1 p-6 rounded-md">
+            <h1 class="fs-5">Example product...</h1>
+            <img class="h-20 border-1 my-2" src="" alt="Example image">
+            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
+            <div class="text-right">
+                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+</body>
+</html>
