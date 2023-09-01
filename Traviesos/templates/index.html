@@ -32,13 +32,13 @@
                 </div>
                 <div class="offcanvas-body bg-gray-100">
                   <div class="mt-12">
-                  <a href="pqrs.html" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-person-lines-fill"></i> PQRS</a><br><br>
+                  <a href="{% url 'pqrs' %}" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-person-lines-fill"></i> PQRS</a><br><br>
                   <a href="{% url 'carrito' %}" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-basket"></i> Carrio de compras</a><br><br>
                   <a href="coment.html" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-pen"></i> Comentarios</a>
                   </div>
                 </div>
               </div>
-                <a href="perfil.html" class="text-gray-600 hover:text-gray-800 px-2 fs-6"><i class="fs-4 bi bi-person-fill"></i></a>
+                <a href="{% url 'login' %}" class="text-gray-600 hover:text-gray-800 px-2 fs-6"><i class="fs-4 bi bi-person-fill"></i></a>
               </div>
         </div>
     </nav> 
@@ -68,19 +68,19 @@
     <h1 class="fs-3 text-center py-4">Categorías</h1>
     <div class="mt-8 grid grid-cols-3 gap-10 items-center mx-24">
       <div class="bg-white shadow-md rounded-md flex flex-col items-center p-2">
-        <a href="" class="">
+        <a href="{% url 'juguetes' %}" class="">
           <h3 class="fs-5 my-2 text-center">Juguetes</h3>
           <img class="h-48 my-2 " src="{% static 'image/image_productos/accesorios/juguetes.jfif'%}" alt="" >
         </a>
       </div>
       <div class="bg-white shadow-md rounded-md flex flex-col items-center p-2">
-        <a href="" class="">
+        <a href="{% url 'camas_muebles' %}" class="">
           <h3 class="fs-5 my-2 text-center">Camas y Muebles</h3>
           <img class="h-48" src="{% static 'image/image_productos/camas/camas.png'%}" alt="" >
         </a>
       </div>
       <div class="bg-white shadow-md rounded-lg flex flex-col items-center p-2">  
-        <a href="" class="">
+        <a href="{% url 'ropas_accesorios' %}" class="">
           <h3 class="fs-5 my-2 text-center">Ropa y Accesorios</h3>
           <img class="h-48 rounded" src="{% static 'image/image_productos/ropa/ropa.jpeg'%}" alt="" >
         </a>    
@@ -93,7 +93,7 @@
         <img class="rounded-md shadow-md" src="{% static 'image/image_home/banner_citas.jpg'%}" alt="">
       </div>
       <div class="mt-10 text-center">
-        <a class="p-3 rounded-md border-1 border-orange-200 hover:bg-orange-200 " href="">solicita tu cita <i class="bi bi-list-check"></i></a>
+        <a class="p-3 rounded-md border-1 border-orange-200 hover:bg-orange-200 " href="{% url 'citas' %}">solicita tu cita <i class="bi bi-list-check"></i></a>
       </div>
   </section>
   <section class="mt-12 bg-gray-100 py-16" id="comentarios">
