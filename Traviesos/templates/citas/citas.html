@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
+  <title>Traviesos</title>
+</head>
+
+<header>
+  <nav class="bg-orange-200 container-fluid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+              <div class="flex items-center space-x-2">
+                <input type="text" class="flex-grow px-6 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300" placeholder="¿Qué deseas buscar?">
+                <span id="icon-search" class="px-3 py-2 text-white bg-orange-300 rounded-md hover:bg-orange-200 cursor-pointer"><i class="bi bi-search"></i></span>
+                <a href="carrito.html" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-cart-check-fill"></i></a>
+              </div>
+            <div class="flex items-center">
+              <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
+              <div class="hidden md:block">
+                <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
+                  <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a></li>
+                  <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a></li>
+                  <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+  </header>
+
+<main><br><br>
+  <div class="container">
+    <h1 style="font-size: 30px;">Agendar cita</h1><br><br>
+    <form class="row g-4">
+      <div class="">
+        <b><label for="">Tipo de cita</label></b>
+        <select class="form-select" name="tipo" id="tipo" aria-label="Default select example" required>
+          <option value="" selected>Seleccionar</option>
+          <option value="Peticion">Baño</option>
+          <option value="Queja">Peluqueada</option>
+          <option value="Reclamo">Baño y Peluqueada</option>
+        </select>
+      </div>
+      <div class="">
+        <b><label for="">Tamaño de la mascota</label></b>
+        <select class="form-select" name="tipo" id="tipo" aria-label="Default select example" required>
+          <option value="" selected>Seleccionar</option>
+          <option value="Peticion">Grande</option>
+          <option value="Queja">mediano</option>
+          <option value="Reclamo">pequeño</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <b><label for="">Nombre de la mascota</label></b>
+        <input type="text" name="" class="form-control" minlength="20" maxlength="20" required>
+      </div>
+      <div class="col-md-6">
+        <b><label for="">Fecha de la cita</label></b>
+        <input type="date" name="" class="form-control" min="2023-08-29" max="2023-12-31" required>
+      </div>
+      <div class="col-md-6">
+        <b><label for="">Hora de la cita</label></b>
+        <input type="time" name="" class="form-control" min="09:00" max="19:00" required>
+      </div>
+      <div class="col-md-6">
+        <b><label for="">Número de contacto</label></b>
+        <input type="text" name="" class="form-control" maxlength="10" minlength="10" inputmode="numeric" pattern="[0-9]{10}" required>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-secondary" type="button"><b>Enviar</b></button>
+      </div>
+      
+    </form>
+  </div>
+</main>
+
+</html>
