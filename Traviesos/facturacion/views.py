@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def carrito_view(request):
+    context = {
+        'mensaje': 'Hola desde la vista!',
+    }
+    return render(request, 'carrito/html', context)
+
+
+
+
