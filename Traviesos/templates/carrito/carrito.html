@@ -22,9 +22,22 @@ crossorigin="anonymous"></script>
 </head>
 <body class="flex flex-col min-h-screen">
     
-    <h1 class="bg bg-cyan-200">
-        Tengo popo
+    <h1 class="bg bg-yellow-400 text-center mt-10 py-3 w-1/4 mx-auto rounded-full font-medium">
+        CARRITO DE COMPRAS
     </h1>
+
+    <p class="bg bg-cyan-400 text-center mt-12 py-3 font-bold">
+        No hay nada como podemos Ver
+    </p>
+
+    <a href="{% url 'index' %}" class="bg-red-400 hover:bg-red-500 text-center mt-12 py-3 w-1/4 mx-auto rounded-full font-bold">
+        Salir
+    </a>
+
+    <a href="{% url 'carrito' %}" class="bg-green-400 hover:bg-green-500 text-center mt-12 py-3 w-1/4 mx-auto rounded-full font-bold">
+        Comprar
+    </a>
+
 
 </body>
 </html>
