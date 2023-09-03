@@ -29,6 +29,6 @@ urlpatterns = [
     path('juguetes', facturacion_views.juguetes, name='juguetes'),
     path('camas', facturacion_views.camas, name='camas_muebles'),
     path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
-    path('citas', citas_views.citas, name='citas'),
+    path('gestion/citas', citas_views.citas, name='citas'),
     path('pqrs', pqrs_views.pqrs, name='pqrs')
 ]
