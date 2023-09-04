@@ -22,7 +22,7 @@ from gestion_citas import citas_views
 from PQRS import pqrs_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin:index'),
     path('', views.index, name='index'),
     path('login', views.login_view, name='login'),
     path('carrito', facturacion_views.carrito_view, name='carrito'),
