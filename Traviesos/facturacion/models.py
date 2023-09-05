@@ -1,12 +1,16 @@
 from django.db import models
 
 # Create your models here.
-class Compra(models.Model):[
-    cliente = models.ForeignKey(User, on_delete=models.CASCADE) ,
-    productos = models.ManyToManyField('Producto', through='DetalleCompra')   ,                                                      
-    fecha_compra = models.DateTimeField(auto_now_add=True),
-    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+class Compras(models.Model):
     
-]
+    date = models.DateField(verbose_name='Tipo compra')
+    idProduct = models.ForeignKey()
+    day = models.DateField(verbose_name='Fecha de la cita')
+    hour = models.TimeField(verbose_name='Hora de la cita')
+    phone = models.CharField(max_length=15, verbose_name='Numero de contacto')
+    
+    def __str__(self):
+        return self.name
 
     

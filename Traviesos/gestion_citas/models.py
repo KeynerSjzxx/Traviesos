@@ -26,5 +26,3 @@ class Agendar_cita(models.Model):
     
     def __str__(self):
         return self.name
-    
-    
