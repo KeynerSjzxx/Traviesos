@@ -1,9 +1,34 @@
 from django.db import models
 
+class Tamaño(models.Model):
+    Tamaño = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.Tamaño
+
+    class Meta:
+        verbose_name = 'Tamaño'
+        verbose_name_plural = 'Tamaños'
+        db_table = 'tamaño'
+        ordering = ['id']        
+
+class Raza (models.Model):
+    Raza = models.CharField(max_length=30)
+    
+    def __str__(self):
+        return self.Raza
+    
+    class Meta:
+        verbose_name = 'Raza'
+        verbose_name_plural = 'Razas'
+        db_table = 'raza'
+        ordering = ['id']        
+
 class Mascota(models.Model):
     nombre = models.CharField(max_length=30, unique=True)
-    raza = models.CharField(max_length=30,default='')
+    raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
     peso = models.CharField(max_length=30, default='0')
+    Tamaño = models.ForeignKey(Tamaño, on_delete=models.CASCADE)
     edad =  models.IntegerField(verbose_name='Edad', default=0)
     fecha_nacimiento = models.DateField(verbose_name='Fecha de nacimiento', default='2000-01-01')
     
@@ -17,29 +42,7 @@ class Mascota(models.Model):
         ordering = ['id']
         
         
-class Tamaño(models.Model):
-    nombre = models.ForeignKey(Mascota, on_delete=models.CASCADE)
-    tamaño = models.CharField(
-        max_length=100,
-        choices=[
-            ('Seleccionar', 'Seleccionar'),
-            ('Grande', 'Grande'),
-            ('Mediano', 'Mediano'),
-            ('Pequeño', 'Pequeño'),
-        ],
-        verbose_name='Tamaño', default='Seleccionar'
-    )
 
-    def __str__(self):
-        return self.tamaño
-
-    class Meta:
-        verbose_name = 'tamaño'
-        verbose_name_plural = 'tamaños'
-        db_table = 'tamaño'
-        ordering = ['id']        
-        
-        
         
 
 class AgendarCita(models.Model):
