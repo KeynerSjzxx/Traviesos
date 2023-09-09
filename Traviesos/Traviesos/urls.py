@@ -16,10 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from landing import views
+from facturacion import facturacion_views
+from gestion_citas import citas_views
+from PQRS import pqrs_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin:index'),
     path('', views.index, name='index'),
-    path('premios/', views.premios, name='premios')
+    path('login/', views.login_view, name='login'),
+    path('carrito', facturacion_views.carrito_view, name='carrito'),
+    path('juguetes', facturacion_views.juguetes, name='juguetes'),
+    path('camas', facturacion_views.camas, name='camas_muebles'),
+    path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
+    path('citas', citas_views.formulario_agendar, name='citas'),
+    path('pqrs', pqrs_views.pqrs, name='pqrs'),
+    path('logout/', views.logout_view, name='logout'),
+    path('registro/', views.crear_cuenta, name='registro'),
+    path('perfil', views.perfil, name='perfil')
 ]
