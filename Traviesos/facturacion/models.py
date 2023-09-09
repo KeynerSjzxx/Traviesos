@@ -1,7 +1,20 @@
 from django.db import models
 from inventario.models import Producto
 from inventario.models import Proveedor
+from inventario.models import Marca
+from inventario.models import Categoria
 
+class Producto(models.Model):
+    nomProducto = models.CharField(max_length=30)
+    precioProducto = models.DecimalField(max_digits=10, decimal_places=2)
+    imgProducto = models.ImageField(upload_to='productos/')
+    descripProducto = models.CharField(max_length=50)
+    idMarca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    idCategoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nomProducto
+    
 class Compras(models.Model):
     fechaCompra = models.DateTimeField(verbose_name='Fecha de compra')
     idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
