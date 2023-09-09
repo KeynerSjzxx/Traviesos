@@ -1,0 +1,14 @@
+.sidebar {
+    width: 320px;
+    transition: transform 0.3s ease-in-out;
+}
+.content {
+    margin-left: 320px;
+    transition: margin-left 0.3s ease-in-out;
+}
+.sidebar-hidden .sidebar {
+    transform: translateX(-260px);
+}
+.sidebar-hidden .content {
+    margin-left: 0;
+}

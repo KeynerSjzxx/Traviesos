@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
+    <title>Traviesos</title>
+</head>
+<body>
+    <div class="grid grid-cols-2 border-gray-400 border-1 rounded-lg shadow-lg mx-44 mt-20">
+        <div>
+            <img class="rounded-lg" src="{% static 'image/image_home/perro.png' %}" alt="aea pe :v">
+        </div>
+        <div class="px-4">
+            <h2 class="mt-5 fs-4 text-center">Crear una cuenta</h2>
+            <form class="mt-6" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Usuario</label>
+                    <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="bg-transparent border-2 border-gray-200 px-12 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600 mb-4" placeholder="Ingresa tu nombre de usuario">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Correo Electrónico</label>
+                    <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" class="bg-transparent border-2 border-gray-200 px-12 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600 mb-4" placeholder="Correo electrónico válido">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}">Contraseña</label>
+                    <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="bg-transparent border-2 border-gray-200 px-12 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600 mb-4" placeholder="Ingresa tu contraseña">
+                    {% for error in form.password1.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">Confirmar Contraseña</label>
+                    <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" class="bg-transparent border-2 border-gray-200 px-12 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600 mb-4" placeholder="Confirma tu contraseña">
+                    {% for error in form.password2.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="text-end">
+                    <button class="border-green-500 border-1 rounded-md p-2 hover:bg-green-500 hover:text-white hover:shadow-md" type="submit" class="custom-button">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+</body>
+</html>

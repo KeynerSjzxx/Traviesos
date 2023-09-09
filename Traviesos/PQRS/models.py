@@ -11,6 +11,9 @@ class Tipo_pqrs(models.Model):
         verbose_name_plural = 'Tipos pqrs'
         db_table = 'tipo pqrs'
         ordering = ['id']
+        
+class Estado(models.Model):
+    Estado_pqrs = models.CharField(max_length=30)
 
 class PQRS(models.Model):
     Tipo_pqrs = models.ForeignKey(Tipo_pqrs, on_delete=models.CASCADE)
@@ -21,6 +24,8 @@ class PQRS(models.Model):
     )
     Nombre = models.CharField(max_length=100, verbose_name='Nombre Usuario')
     Descripcion = models.TextField(max_length=500, verbose_name='Descripcion')
+    Estado_pqrs = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    Respuesta = models.CharField(max_length=150)
     
     def __str__(self):
         return self.Nombre
