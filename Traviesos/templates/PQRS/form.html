@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="website icon" href="{% static 'image/image_home/home.png' %}">
+<title>Traviesos</title>
+</head>
+<body class="bg-gray-300">
+    <main class="mt-12">
+        <form method="POST" class="max-w-md mx-auto p-4 bg-white rounded shadow mt-4">
+            <!-- Grupo: Nombre Completo -->
+            <div class="mb-4">
+                <h3 class="fs-5 text-center">¡Déjanos saber tu opinión, {{ user.username }}!</h3>
+            </div>
+            <!-- Grupo: Tipo de PQRS -->
+            <div class="mb-4">
+                <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo de PQRS</label>
+                <div class="mt-1 relative">
+                    <select name="tipo" id="tipo" required class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Seleccionar tipo</option>
+                        <option value="Peticion">Peticion</option>
+                        <option value="Queja">Queja</option>
+                        <option value="Reclamo">Reclamo</option>
+                        <option value="Sugerencia">Sugerencia</option>
+                    </select>
+                </div>
+                <p class="mt-2 text-xs text-red-500">Por favor, seleccione el tipo de PQRS.</p>
+            </div>
+        
+            <!-- Grupo: Correo -->
+            <div class="mb-4">
+                <label for="correo" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <div class="mt-1 relative">
+                    <input type="email" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" name="correo" placeholder="correo@correo.com" required>
+                    <span class="absolute right-2 top-2 text-gray-500">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
+                </div>
+                <p class="mt-2 text-xs text-red-500">El correo solo puede contener letras, números, puntos, guiones y guión bajo.</p>
+            </div>
+        
+            <!-- Grupo: Motivo -->
+            <div class="mb-4">
+                <label for="motivo" class="block text-sm font-medium text-gray-700">Mensaje</label>
+                <div class="mt-1 relative">
+                    <textarea class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" name="mensaje" required></textarea>
+                    <span class="absolute right-2 top-2 text-gray-500">
+                        <i class="bi bi-chat-left-fill"></i>
+                    </span>
+                </div>
+                <p class="mt-2 text-xs text-red-500">El mensaje debe tener un contenido mínimo de 20 palabras.</p>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" name="generar" class="px-4 py-2 border-blue-500 border-1 rounded hover:bg-blue-500 hover:text-white">Enviar</button>
+            </div>
+        </form>
+        
+    </main>
+</body>
+</html>
