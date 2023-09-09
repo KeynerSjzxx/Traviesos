@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib import messages
 from .forms import FormAgendarCita
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def formulario_agendar(request):
     if request.method == 'POST':
         form = FormAgendarCita(request.POST)
