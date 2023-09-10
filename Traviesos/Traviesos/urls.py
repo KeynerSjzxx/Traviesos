@@ -33,5 +33,6 @@ urlpatterns = [
     path('pqrs', pqrs_views.pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
     path('registro/', views.crear_cuenta, name='registro'),
-    path('perfil', views.perfil, name='perfil')
+    path('perfil', views.perfil, name='perfil'),
+    path('comentarios', pqrs_views.coment, name = 'coment')
 ]

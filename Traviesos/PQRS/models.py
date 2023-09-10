@@ -1,6 +1,7 @@
 from django.db import models
 
 class Tipo_pqrs(models.Model):
+    id = models.AutoField(primary_key=True)
     Tipo_pqrs = models.CharField(max_length=30)
     
     def __str__(self):
@@ -13,9 +14,11 @@ class Tipo_pqrs(models.Model):
         ordering = ['id']
         
 class Estado(models.Model):
+    id = models.AutoField(primary_key=True)
     Estado_pqrs = models.CharField(max_length=30)
 
 class PQRS(models.Model):
+    id = models.AutoField(primary_key=True)
     Tipo_pqrs = models.ForeignKey(Tipo_pqrs, on_delete=models.CASCADE)
     create_at = models.DateTimeField(
         auto_now_add=True,
