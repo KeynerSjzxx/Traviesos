@@ -10,5 +10,5 @@ class FormAgendarCita(forms.ModelForm):
         queryset=Mascota.objects.all(),
         empty_label="Seleccionar una mascota",
         to_field_name='nombre',
-        widget=forms.Select(attrs={'class': 'form-select'}),  # Agrega la clase 'form-select' para aplicar estilos de Bootstrap
+        widget=forms.Select(attrs={'class': 'form-select'}),
     )

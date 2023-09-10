@@ -30,8 +30,9 @@ urlpatterns = [
     path('camas', facturacion_views.camas, name='camas_muebles'),
     path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
     path('citas', citas_views.formulario_agendar, name='citas'),
-    path('pqrs', pqrs_views.pqrs, name='pqrs'),
+    path('pqrs', pqrs_views.formulario_pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
     path('registro/', views.crear_cuenta, name='registro'),
-    path('perfil', views.perfil, name='perfil')
+    path('perfil', views.perfil, name='perfil'),
+    path('form.html', pqrs_views.formulario_pqrs, name='pqrs_form')
 ]
