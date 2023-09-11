@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/7d08ee079d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+    <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
+    <title>Datos</title>
+</head>
+<body>
+    <div class="flex justify-center mt-24">
+        <form class="bg-amber-100 border-1 p-4" method="post">
+            <h1 class="mb-2 fs-5 text-center p-2">Registro de Información Adicional</h1>
+            {% csrf_token %}
+            <div>
+                <label for="{{ formulario.Nombre_completo.id_for_label }}">Nombre Completo:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64 " id='{{ formulario.Nombre_completo }}' name='{{ formulario.Nombre_completo }}'>
+            </div>
+            <div>
+                <label for="{{ formulario.Fecha_nacimiento.id_for_label }}">Fecha de Nacimiento:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Fecha_nacimiento }}' name='{{ formulario.Fecha_nacimiento }}'>
+            </div>
+            <div>
+                <label for="{{ formulario.Correo.id_for_label }}">Correo:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" name='{{ formulario.Correo }}' id='{{ formulario.Correo }}'>
+            </div>
+            <div>
+                <label for="{{ formulario.Numero_telefonico.id_for_label }}">Número Telefónico:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Numero_telefonico }}' name='{{ formulario.Numero_telefonico }}'>
+            </div>
+            <div>
+                <label for="{{ formulario.Dirreccion_recidencia.id_for_label }}">Dirección de Residencia:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Dirreccion_recidencia }}' name='{{ formulario.Dirreccion_recidencia }}'> 
+            </div>
+            <div>
+                <label for="{{ formulario.Numero_tarjeta.id_for_label }}">Número de Tarjeta:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Numero_tarjeta }}' name='{{ formulario.Numero_tarjeta }}'>
+            </div>
+            <div>
+                <label for="{{ formulario.cvv.id_for_label }}">CVV:</label>
+                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.cvv }}' name='{{ formulario.cvv }}'>
+            </div>
+            <div class="text-end">
+                <button class="p-2 border-1 border-black rounded-md hover:bg-white hover:text-gray-400" type="submit">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
