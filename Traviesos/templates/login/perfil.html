@@ -17,19 +17,36 @@
     </head>
     <body class="bg-gray-200">
         <div class="flex">
-            <!-- Barra lateral -->
             <aside class="sidebar bg-gray-800 text-white h-screen fixed top-0 left-0 overflow-y-auto">
                 <div class="p-4">
                     <h1 class="fs-5 font-semibold">¡Bienvenido a tu perfil, {{ user.username }}!</h1>
                     <ul class="mt-4">
-                        <li class="py-2 hover:bg-gray-700"><a href="#"><i class="bi bi-person-fill-gear"></i> Tus Datos</a></li>
+                        <li class="py-2 hover:bg-gray-700"><a href="#datos"><i class="bi bi-person-fill-gear"></i> Tus Datos</a></li>
                         <li class="py-2 hover:bg-gray-700"><a href="#"><i class="fa-solid fa-dog"></i>  Tus mascotas</a></li>
                     </ul>
                 </div>
             </aside>
-    <main class="content p-8">
-        <h1 class="text-2xl">Example title</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ex sit amet velit dapibus auctor. Vestibulum tristique ligula eu suscipit. Duis auctor, velit ac interdum venenatis, augue purus vehicula ligula, eu blandit ex orci vel sapien.</p>
+    <main class="content p-8 ">
+        <section id="datos">
+            {% if informacion_adicional %}
+            <div class="text-end">
+                <a class="border-1 border-green-500 p-2 rounded-md text-green-500 hover:bg-green-500 hover:text-white" href="{% url 'datos' %}">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
+            </div>
+            <div class="mt-32">
+                <h1 class="fs-4">Tus datos, {{user.username}}</h1>
+                <p class="fs-5">Nombre Completo: {{ informacion_adicional.Nombre_completo }}</p>
+                <p class="fs-5">Fecha de Nacimiento: {{ informacion_adicional.Fecha_nacimiento }}</p>
+                <p class="fs-5">Correo: {{ informacion_adicional.Correo }}</p>
+                <p class="fs-5">Número Telefónico: {{ informacion_adicional.Numero_telefonico }}</p>
+                <p class="fs-5">Dirección de Residencia: {{ informacion_adicional.Dirreccion_recidencia }}</p>
+                <p class="fs-5">Número de Tarjeta: {{ informacion_adicional.Numero_tarjeta }}</p>
+                <p class="fs-5">CVV: {{ informacion_adicional.cvv }}</p>
+            </div>
+        {% else %}
+            <a class="border-1 border-blue-500 p-2 rounded-md text-blue-500 hover:bg-blue-500 hover:text-white" href="{% url 'datos' %}">Agregar datos <i class="fa-regular fa-user"></i></a>
+            <p>Todavía no has guardado tus datos.</p>
+        {% endif %}
+        </section>
     </main>
         </div>
     </body>
