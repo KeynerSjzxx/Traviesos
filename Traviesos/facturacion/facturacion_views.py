@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from inventario.models import Productos
+from .utils import get_or_create_cart
 from . models import cart
 
 def cart(request):
@@ -14,4 +16,13 @@ def cart(request):
 
         return render(request, 'carrito/carrito.html', {
 
+        })
+    
+    def add(request):
+        cart = get_or_create_cart(request)
+        Productos = Productos.objects.get(pk=request.POST.get('product_id'))
+
+        cart.productos.add(Productos)
+        return render(request, 'prod_carro/add.html', {
+            'Productos': Productos
         })
