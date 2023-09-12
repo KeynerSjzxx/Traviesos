@@ -1,9 +1,16 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import PQRS, Tipo_pqrs, Estado
+from .resources import PqrsResource, EstadoResource
 # Register your models here.
 
-admin.site.register(Tipo_pqrs)
-admin.site.register(Estado)
+@admin.register(Estado)
+class estadoAdmin(ImportExportModelAdmin):
+    resource_class = EstadoResource
+
+@admin.register(Tipo_pqrs)
+class tipoAdmin(ImportExportModelAdmin):
+    resource_class = PqrsResource
 
 @admin.register(PQRS)
 class pqrstAdmin(admin.ModelAdmin):

@@ -35,7 +35,14 @@ urlpatterns = [
     path('citas', citas_views.formulario_agendar, name='citas'),
     path('pqrs', pqrs_views.formulario_pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
+<<<<<<< HEAD
     path('registro/', views.crear_cuenta, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('form.html', pqrs_views.formulario_pqrs, name='pqrs_form')
+=======
+    path('registro/', views.registro, name='registro'),
+    path('perfil', views.perfil, name='perfil'),
+    path('datos', views.registro_informacion_adicional, name='datos'),
+    
+>>>>>>> 50df9a6111a0b8b0cc999e1bf99a9c4023221809
 ]
