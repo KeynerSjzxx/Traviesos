@@ -16,7 +16,6 @@ urlpatterns = [
     path('citas', citas_views.formulario_agendar, name='citas'),
     path('pqrs', pqrs_views.formulario_pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
-    path('registro/', views.crear_cuenta, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('form.html', pqrs_views.formulario_pqrs, name='pqrs_form'),
     path('registro/', views.registro, name='registro'),
