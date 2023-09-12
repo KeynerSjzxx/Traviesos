@@ -19,38 +19,18 @@
         <form class="bg-amber-100 border-1 p-4" method="post">
             <h1 class="mb-2 fs-5 text-center p-2">Registro de Información Adicional</h1>
             {% csrf_token %}
-            <div>
-                <label for="{{ formulario.Nombre_completo.id_for_label }}">Nombre Completo:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64 " id='{{ formulario.Nombre_completo }}' name='{{ formulario.Nombre_completo }}'>
-            </div>
-            <div>
-                <label for="{{ formulario.Fecha_nacimiento.id_for_label }}">Fecha de Nacimiento:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Fecha_nacimiento }}' name='{{ formulario.Fecha_nacimiento }}'>
-            </div>
-            <div>
-                <label for="{{ formulario.Correo.id_for_label }}">Correo:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" name='{{ formulario.Correo }}' id='{{ formulario.Correo }}'>
-            </div>
-            <div>
-                <label for="{{ formulario.Numero_telefonico.id_for_label }}">Número Telefónico:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Numero_telefonico }}' name='{{ formulario.Numero_telefonico }}'>
-            </div>
-            <div>
-                <label for="{{ formulario.Dirreccion_recidencia.id_for_label }}">Dirección de Residencia:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Dirreccion_recidencia }}' name='{{ formulario.Dirreccion_recidencia }}'> 
-            </div>
-            <div>
-                <label for="{{ formulario.Numero_tarjeta.id_for_label }}">Número de Tarjeta:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.Numero_tarjeta }}' name='{{ formulario.Numero_tarjeta }}'>
-            </div>
-            <div>
-                <label for="{{ formulario.cvv.id_for_label }}">CVV:</label>
-                <input class="border-1 border-gray-500 mb-2 rounded-md h-8 w-64" id='{{ formulario.cvv }}' name='{{ formulario.cvv }}'>
-            </div>
+            {{ formulario.Nombre_completo.label_tag }} {{ formulario.Nombre_completo }}
+            {{ formulario.Fecha_nacimiento.label_tag }} {{ formulario.Fecha_nacimiento }}
+            {{ formulario.Correo.label_tag }} {{ formulario.Correo }}
+            {{ formulario.Numero_telefonico.label_tag }} {{ formulario.Numero_telefonico }}
+            {{ formulario.Dirreccion_recidencia.label_tag }} {{ formulario.Dirreccion_recidencia }}
+            {{ formulario.Numero_tarjeta.label_tag }} {{ formulario.Numero_tarjeta }}
+            {{ formulario.cvv.label_tag }} {{ formulario.cvv }}
             <div class="text-end">
                 <button class="p-2 border-1 border-black rounded-md hover:bg-white hover:text-gray-400" type="submit">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
             </div>
         </form>
+        
     </div>
 </body>
 </html>
