@@ -24,10 +24,12 @@ def registro_informacion_adicional(request):
         formulario = InformacionAdicionalUsuarioForm(request.POST)
         if formulario.is_valid():
             informacion_adicional = formulario.save(commit=False)
-            informacion_adicional.user = request.user 
+            informacion_adicional.user = request.user
             informacion_adicional.save()
-            
+
             messages.success(request, 'Tu información adicional se ha guardado correctamente.')
+
+            return redirect('perfil')
     else:
         formulario = InformacionAdicionalUsuarioForm()
 
