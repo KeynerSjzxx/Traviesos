@@ -19,8 +19,8 @@ class Categoria(models.Model):
         return self.Nombre_categoria
     
     class Meta:
-        verbose_name = 'Categoria'
-        verbose_name_plural = 'Categorias'
+        verbose_name = 'Categoria producto'
+        verbose_name_plural = 'Categorias producto'
         db_table = 'categorias'
         ordering = ['id'] 
 
