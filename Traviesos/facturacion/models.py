@@ -1,16 +1,16 @@
 from django.db import models
-
+from landing.models import  users
+from inventario.models import productos
 # Create your models here.
+class cart(models.Model):
+    users = models.ForeignKey(users, null=True, blank=True, on_delete=models.CASCADE) #uno a muchos
+    productos = models.ManyToMany(productos)
+    subtotal = models.DecimalField(default=0.0, max_digits=8, decimal_places=2)
+    total = models.DecimalField(default=0.0, max_digits=8, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-class Compras(models.Model):
-    
-    date = models.DateField(verbose_name='Tipo compra')
-    idProduct = models.ForeignKey()
-    day = models.DateField(verbose_name='Fecha de la cita')
-    hour = models.TimeField(verbose_name='Hora de la cita')
-    phone = models.CharField(max_length=15, verbose_name='Numero de contacto')
-    
     def __str__(self):
-        return self.name
+        return ''
+
 
     
