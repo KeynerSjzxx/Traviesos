@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/7d08ee079d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//code.tidio.co/kczpks5iafw7sips7x6vfgjynam1qzs0.js" async></script>
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
+    <title>Mascotas</title>
+    </head>
+    <header>
+      <nav class="bg-orange-200 container-fluid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-2">
+            </div>
+            <div class="flex items-center">
+              <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
+              <div class="hidden md:block">
+                <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
+                  <li><a href="{% url 'index' %}"
+                      class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a>
+                  </li>
+                  <li><a href="{% url 'index' %}"
+                      class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a>
+                  </li>
+                  <li><a href="{% url 'index' %}"
+                      class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <body class="bg-orange-50">
+      <main class="content p-8 ">
+        <div class="flex">
+            <aside class="sidebar bg-gray-800 text-white h-screen fixed top-0 left-0 overflow-y-auto">
+                <div class="p-4"><br><br>
+                    <h1 class="fs-5 font-semibold">¡Bienvenido a tu perfil, {{ user.username }}!</h1>
+                    <ul class="mt-4">
+                        <li class="py-2 hover:bg-gray-700"> <a href="{% url 'perfil' %}"><i class="bi bi-person-fill-gear"></i> Tus Datos</a></li>
+                        <li class="py-2 hover:bg-gray-700"> <a href="#"><i class="fa-solid fa-dog"></i>  Tus mascotas</a></li>
+                    </ul>
+                </div>
+            </aside>
+            
+              <div class="flex justify-center mt-24">
+                  <form class="bg-amber-100 border-1 p-4" method="post">
+                      <h1 class="mb-2 fs-5 text-center p-2">Registro de Información Adicional</h1>
+                      {% csrf_token %}
+                      {{ formulario.nombre.label_tag }} {{ formulario.nombre }}
+                      {{ formulario.raza.label_tag }} {{ formulario.raza }}
+                      {{ formulario.peso.label_tag }} {{ formulario.peso }}
+                      {{ formulario.Tamaño.label_tag }} {{ formulario.Tamaño }}
+                      {{ formulario.edad.label_tag }} {{ formulario.edad }}
+                      {{ formulario.fecha_nacimiento.label_tag }} {{ formulario.fecha_nacimiento }}
+                      <div class="text-end">
+                          <button class="p-2 border-1 border-black rounded-md hover:bg-white hover:text-gray-400" type="submit">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+                      </div>
+                  </form>
+                  
+              </div>
+          </body>
+        </main>
+    </body>
+    </html>

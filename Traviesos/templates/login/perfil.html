@@ -22,7 +22,7 @@
                     <h1 class="fs-5 font-semibold">¡Bienvenido a tu perfil, {{ user.username }}!</h1>
                     <ul class="mt-4">
                         <li class="py-2 hover:bg-gray-700"><a href="#datos"><i class="bi bi-person-fill-gear"></i> Tus Datos</a></li>
-                        <li class="py-2 hover:bg-gray-700"><a href="#"><i class="fa-solid fa-dog"></i>  Tus mascotas</a></li>
+                        <li class="py-2 hover:bg-gray-700"><a href="citas/mascotas.html"><i class="fa-solid fa-dog"></i>  Tus mascotas</a></li>
                     </ul>
                 </div>
             </aside>
@@ -46,6 +46,9 @@
             <a class="border-1 border-blue-500 p-2 rounded-md text-blue-500 hover:bg-blue-500 hover:text-white" href="{% url 'datos' %}">Agregar datos <i class="fa-regular fa-user"></i></a>
             <p>Todavía no has guardado tus datos.</p>
         {% endif %}
+        </section>
+        <section id="">
+
         </section>
     </main>
         </div>

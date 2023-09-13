@@ -1,9 +1,15 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import AgendarCita, Mascota, Tamaño, Raza
 # Register your models here.
 
-admin.site.register(Tamaño)
-admin.site.register(Raza)
+@admin.register(Tamaño)
+class TamañoAdmin(ImportExportModelAdmin):
+    pass
+
+@admin.register(Raza)
+class RazaAdmin(ImportExportModelAdmin):
+    pass
 
 @admin.register(Mascota)
 class MacotaAdmin(admin.ModelAdmin):
