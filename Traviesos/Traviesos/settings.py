@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'facturacion',
     'PQRS',
     'gestion_citas',
+    'carts',
 ]
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",

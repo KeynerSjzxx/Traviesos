@@ -56,6 +56,12 @@ crossorigin="anonymous"></script>
         <div class="text-right">
           <a class="btn btn-outline-success" href="">Comprar <i class="bi bi-shop-window"></i></a>
         </div>
+        <form method="post">
+
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <button type="submit" class="btn btn-warning">Agregar al carrito</button>
+      
+      </form>
       </div>
       {% endfor %}
     </div>

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from inventario.models import Producto
-from .utils import get_or_create_cart
 from . models import cart
 
 def cart(request):
@@ -19,18 +18,18 @@ def cart(request):
         })
     
     def add(request):
-        cart = get_or_create_cart(request)
+        cart = (request)
         Productos = Productos.objects.get(pk=request.POST.get('product_id'))
 
         cart.productos.add(Productos)
-        return render(request, 'prod_carro/add.html', {
+        return render(request, 'productos/add.html', {
             'Productos': Productos
         })
     
 @login_required
 def carrito_view(request):
     # Lógica de la vista
-    return render(request, 'carrito/carrito.html')  # Renderiza la plantilla 'carrito.html'
+    return render(request, 'productos/add.html')  # Renderiza la plantilla 'carrito.html'
 def juguetes (request):
     productos = Producto.objects.all()
     return render(request, 'productos/juguetes.html',{'productos':productos})
