@@ -7,4 +7,4 @@ from inventario.models import Producto
 from django.db.models.signals import pre_save
 
 class Cart(models.Model):
-    cart_id = models.CharField(max_length=100, null=False, blank=False, unique=:)
+    cart_id = models.CharField(max_length=100, null=False, blank=False, unique=True)
