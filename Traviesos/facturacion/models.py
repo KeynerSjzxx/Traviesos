@@ -1,28 +1,23 @@
 from django.db import models
-
 from inventario.models import Producto
+from carts.models import Cart
 from django.contrib.auth.models import User
-# Create your models here.
-class cart(models.Model):
-    users = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE) #uno a muchos
+
+class Cart(models.Model):  # Cambia "cart" a "Cart" para que coincida con las convenciones de nombres
+    users = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     subtotal = models.DecimalField(default=0.0, max_digits=8, decimal_places=2)
     total = models.DecimalField(default=0.0, max_digits=8, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return ''
-    
-from inventario.models import Producto
-# Create your models here.
+        return str(self.id)  # Cambia el retorno para mostrar algo significativo
 
-
-class Compras(models.Model):
+class Compra(models.Model):  # Cambia "Compras" a "Compra" para que coincida con las convenciones de nombres
     
-    date = models.DateField(verbose_name='Tipo compra')
+    date = models.DateField(verbose_name='Fecha de compra')  # Cambia 'Tipo compra' a 'Fecha de compra'
     idProduct = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    day = models.DateField(verbose_name='Fecha de la cita')
-    hour = models.TimeField(verbose_name='Hora de la cita')
-    phone = models.CharField(max_length=15, verbose_name='Numero de contacto')
+    day = models.DateField(verbose_name='Fecha de la compra', null=True, blank=True)  # Cambia "Fecha de la cita" a algo más apropiado
+    hour = models.TimeField(verbose_name='Hora de la compra', null=True, blank=True)  # Cambia "Hora de la cita" a algo más apropiado
     
     def __str__(self):
-        return self.idProduct
+        return str(self.idProduct)  # Cambia el retorno para mostrar algo significativo
