@@ -1,6 +1,7 @@
 from django.db import models
 from inventario.models import Producto
 from carts.models import Cart
+from inventario.models import Compras
 from django.contrib.auth.models import User
 
 class Cart(models.Model):  # Cambia "cart" a "Cart" para que coincida con las convenciones de nombres

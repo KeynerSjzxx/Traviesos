@@ -4,6 +4,23 @@ from django.shortcuts import render, redirect  # Añade "redirect" para redirigi
 from inventario.models import Producto
 from .models import Cart
 from .utils import get_or_create_cart
+from .models import Cart  # Importa el modelo Cart
+
+def cart_view(request):
+    user = request.user if request.user.is_authenticated else None
+    cart_instance = Cart.objects.filter(users=user).first()  # Obtén el carrito del usuario
+
+    if cart_instance is None:
+        # Si el carrito no existe, puedes manejarlo como desees (crear uno, redirigir, etc.)
+        # En este ejemplo, simplemente lo inicializaremos a una lista vacía de productos.
+        cart_products = []
+    else:
+        # Obtén los productos en el carrito
+        cart_products = cart_instance.products.all()
+
+    return render(request, 'carrito/carrito.html', {
+        'cart_products': cart_products  # Pasa los productos al contexto
+    })
 
 def cart(request):
     # Utiliza un nombre de variable diferente para evitar conflicto con el modelo "Cart"
