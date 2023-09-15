@@ -25,6 +25,7 @@ class Raza (models.Model):
         ordering = ['id']        
 
 class Mascota(models.Model):
+    id = models.IntegerField(primary_key= True)
     nombre = models.CharField(max_length=30, unique=True)
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
     peso = models.CharField(max_length=30, default='0')

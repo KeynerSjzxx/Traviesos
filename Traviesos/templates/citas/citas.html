@@ -22,14 +22,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center space-x-2">
-          <input type="text"
-            class="flex-grow px-6 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
-            placeholder="¿Qué deseas buscar?">
-          <span id="icon-search"
-            class="px-3 py-2 text-white bg-orange-300 rounded-md hover:bg-orange-200 cursor-pointer"><i
-              class="bi bi-search"></i></span>
-          <a href="carrito.html" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i
-              class="bi bi-cart-check-fill"></i></a>
         </div>
         <div class="flex items-center">
           <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
@@ -50,11 +42,10 @@
       </div>
     </div>
   </nav>
-  <img src="{% static 'image/image_home/pet.webp' %}" alt="" class="" style="width: 100%; height: 320px;">
 </header>
 
-<body>
-  <div class="container">
+<body class="bg-orange-50">
+  <div class="container"><br><br><br><br><br><br>
     <h1 style="font-size: 30px;">Agendar cita</h1><br>
     {% if messages %}
     <div class="row">
@@ -105,7 +96,7 @@
             </div>
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-outline-secondary" type="submit" value="Submit"><b>Enviar</b></button>
+            <button class="p-2 border-2 border-black rounded-md hover:bg-orange hover:text-orange-200" type="submit" value="Submit"><b>Enviar</b></button>
           </div>
     </form>
   </div>

@@ -14,7 +14,7 @@ class tipoAdmin(ImportExportModelAdmin):
 
 @admin.register(PQRS)
 class pqrstAdmin(admin.ModelAdmin):
-    list_display = ('Tipo_pqrs', 'create_at', 'Nombre', 'Descripcion')
+    list_display = ('Tipo_pqrs', 'create_at', 'correo', 'descripcion')
     search_fields = ('create_at',)
     list_filter = ('Tipo_pqrs',)
     list_per_page = 10

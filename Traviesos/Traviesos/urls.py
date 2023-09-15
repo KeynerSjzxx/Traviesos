@@ -1,19 +1,3 @@
-"""
-URL configuration for Traviesos project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from landing import views
@@ -29,11 +13,23 @@ urlpatterns = [
     path('juguetes', facturacion_views.juguetes, name='juguetes'),
     path('camas', facturacion_views.camas, name='camas_muebles'),
     path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
-    path('citas', citas_views.formulario_agendar, name='citas'),
-    path('pqrs', pqrs_views.pqrs, name='pqrs'),
+    path('citas/citas', citas_views.formulario_agendar, name='citas'),
+    path('pqrs', pqrs_views.formulario_pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
+    path('perfil', views.perfil, name='perfil'),
+    path('form.html', pqrs_views.formulario_pqrs, name='pqrs_form'),
     path('registro/', views.registro, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('datos', views.registro_informacion_adicional, name='datos'),
+<<<<<<< HEAD
+    path('citas/mascotas', citas_views.agregar_mascota, name='mascota'),
+    path('citas/lista_citas', citas_views.ver_citas, name='lista_citas'),
+    path('citas/datos_mascotas', citas_views.datos_mascota, name='datos_mascota'),
     
 ]
+=======
+    path('registro/', views.registro, name='registro'),
+    path('perfil', views.perfil, name='perfil'),
+    path('comentarios', pqrs_views.coment, name='coment'),
+]
+>>>>>>> fa412d6474a7a921ff1b0b6f166109d061280eb8
