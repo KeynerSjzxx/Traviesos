@@ -48,6 +48,17 @@ INSTALLED_APPS = [
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",
 }
+
+JAZZMIN_SETTINGS = {
+    'site_title' : "Traviesos",
+    'site_header' : "Admin",
+    'site_brand' : "Traviesos",
+    'site_logo' : "image/image_home/traviesos.jpeg",
+    'site_favicon' : "image/image_home/favicon.ico",
+    'welcome_sign' : "Bienvenio a Traviesos",
+    'copyright' : 'Taviesos'
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
