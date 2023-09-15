@@ -7,6 +7,7 @@ from PQRS import pqrs_views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin:index'),
+     path('carrito/', views.cart_view, name='carrito_view'),  # Asegúrate de que el
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
     path('prod_carro/', facturacion_views.carrito_view, name='carrito'),

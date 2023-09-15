@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
 
+def cart_view(request):
+    # Tu lógica para la vista del carrito aquí
+    return render(request, 'landing/cart.html')  # Asegúrate de ajustar la plantilla y la lógica según tus necesidades
+
 def index (request):
     return render(request, 'index.html')
 
