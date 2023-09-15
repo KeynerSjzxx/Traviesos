@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Tipo_pqrs(models.Model):
     id = models.AutoField(primary_key=True)
@@ -10,12 +12,15 @@ class Tipo_pqrs(models.Model):
     class Meta:
         verbose_name = 'Tipo pqrs'
         verbose_name_plural = 'Tipos pqrs'
-        db_table = 'tipo pqrs'
+        db_table = 'tipo_pqrs'
         ordering = ['id']
         
 class Estado(models.Model):
     id = models.AutoField(primary_key=True)
     Estado_pqrs = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.Estado_pqrs
 
 class PQRS(models.Model):
     id = models.AutoField(primary_key=True)
@@ -27,11 +32,19 @@ class PQRS(models.Model):
     )
     Nombre = models.CharField(max_length=100, verbose_name='Nombre Usuario')
     Descripcion = models.TextField(max_length=500, verbose_name='Descripcion')
-    Estado_pqrs = models.ForeignKey(Estado, on_delete=models.CASCADE)
-    Respuesta = models.CharField(max_length=150)
+    Respuesta = models.CharField(max_length=150, blank=True, null=True)
+    Estado_pqrs = models.ForeignKey(Estado, on_delete=models.CASCADE, default=1)
     
     def __str__(self):
         return self.Nombre
+
+# Esta función se ejecutará después de que se guarde una instancia de PQRS
+@receiver(post_save, sender=PQRS)
+def actualizar_estado(sender, instance, **kwargs):
+    if instance.Respuesta and instance.Estado_pqrs.Estado_pqrs == "Pendiente":
+        estado_respuesta = Estado.objects.get(Estado_pqrs="Respuesta")
+        instance.Estado_pqrs = estado_respuesta
+        instance.save()
     
     class Meta:
         verbose_name = 'PQRS'
