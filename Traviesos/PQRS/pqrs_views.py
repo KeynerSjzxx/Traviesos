@@ -3,7 +3,6 @@ from django.contrib import messages
 from .models import Tipo_pqrs
 from .forms import FormAgendarPqrs
 
-<<<<<<< HEAD
 def formulario_pqrs(request):
     if request.method == 'POST':
         form = FormAgendarPqrs(request.POST)
@@ -31,11 +30,9 @@ def formulario_pqrs(request):
 
 def mostrar_formulario(request):
     return render(request, 'PQRS/form.html')
-=======
 @login_required
 def pqrs (request):
     return render(request,'PQRS/form.html', {'user': request.user})
 
 def coment (request):
     return render(request, 'PQRS/coment.html')
->>>>>>> fa412d6474a7a921ff1b0b6f166109d061280eb8
