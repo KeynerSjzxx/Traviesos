@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import FormAgendarCita, informacion_mascota
 from django.contrib.auth.decorators import login_required
+from .models import Mascota
 
 @login_required
 def formulario_agendar(request):
@@ -23,21 +24,22 @@ def formulario_agendar(request):
     context = {'form': form}
     return render(request, 'citas/citas.html', context)
 
-@login_required
 def datos_mascota(request):
     if request.method == 'POST':
-        formulario = informacion_mascota(request.POST)
-        if formulario.is_valid():
-            informacion_mascotas = formulario.save(commit=False)
+        formulario2 = informacion_mascota(request.POST)
+        if formulario2.is_valid():
+            informacion_mascotas = formulario2.save(commit=False)
             informacion_mascotas.user = request.user
             informacion_mascotas.save()
             messages.success(request, 'Tu información adicional se ha guardado correctamente.')
             return redirect('mascota') 
     
     else:
-        formulario = informacion_mascota()
-    return render(request, 'citas/datos_mascotas.html', {'formulario': formulario})
+        formulario2 = informacion_mascota()
+    return render(request, 'citas/datos_mascotas.html', {'formulario': formulario2})
 
 def agregar_mascota(request):
-    return render(request, 'citas/mascota.html')
+    lista = Mascota.objects.all()
+    print(lista)
+    return render(request, 'citas/mascota.html', {'lista': lista})
     

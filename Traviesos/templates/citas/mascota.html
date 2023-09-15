@@ -33,27 +33,30 @@
             </div>
         </aside>
         <main class="content p-8 ">
+            <a class="btn btn-outline-success" href="datos_mascotas"><b>Agregar mascota </b><i
+                    class="fa-regular fa-user"></i></a>
+            {% if lista|length < 1 %}
+
+            <p>Aun no has agregado ninguna mascota.</p>
+
+            {% endif %}
             <section id="datos">
-                {% if informacion_mascotas %}
-                <div class="text-end">
-                    <a class="border-1 border-green-500 p-2 rounded-md text-green-500 hover:bg-green-500 hover:text-white"
-                        href="datos_mascotas.html">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
-                </div>
+                {% for o in lista %}
                 <div class="mt-32">
                     <h1 class="fs-4">Tus datos, {{user.username}}</h1>
-                    <p class="fs-5">Nombre de la mascota: {{ informacion_mascotas.nombre }}</p>
-                    <p class="fs-5">Raza de la mascota: {{ informacion_mascotas.raza }}</p>
-                    <p class="fs-5">Peso de la mascota: {{ informacion_mascotas.peso }}</p>
-                    <p class="fs-5">Tamaño de la mascota: {{ informacion_mascotas.Tamaño }}</p>
-                    <p class="fs-5">Edad de la mascota: {{ informacion_mascotas.edad }}</p>
-                    <p class="fs-5">Fecha de nacimiento de la mascota: {{ informacion_mascotas.fecha_nacimiento }}
-                    </p>
+                    <p class="fs-5">Nombre de la mascota: {{ o.nombre }}</p>
+                    <p class="fs-5">Raza de la mascota: {{ o.raza }}</p>
+                    <p class="fs-5">Peso de la mascota: {{ o.peso }}</p>
+                    <p class="fs-5">Tamaño de la mascota: {{ o.Tamaño }}</p>
+                    <p class="fs-5">Edad de la mascota: {{ o.edad }}</p>
+                    <p class="fs-5">Fecha de nacimiento de la mascota: {{ o.fecha_nacimiento }}
+                    </p><br>
+                    <div class="text-end">
+                        <a class="border-1 border-orange-500 p-2 rounded-md text-black-500 hover:bg-orange-200 hover:text-orange"
+                            href="datos_mascotas">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
+                    </div>
                 </div>
-                {% else %}
-                <a class="btn btn-outline-success" href="datos_mascotas.html"><b>Agregar mascota </b><i
-                        class="fa-regular fa-user"></i></a><br><br>
-                <p>Aun no has agregado ninguna mascota.</p>
-                {% endif %}
+                {% endfor %}
             </section>
             <section id="">
 

@@ -21,7 +21,7 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('datos', views.registro_informacion_adicional, name='datos'),
-    path('citas/mascotas.html', citas_views.agregar_mascota, name='mascota'),
-    path('citas/datos_mascotas.html', citas_views.datos_mascota, name='datos_mascota'),
+    path('citas/mascotas', citas_views.agregar_mascota, name='mascota'),
+    path('citas/datos_mascotas', citas_views.datos_mascota, name='datos_mascota'),
     
 ]
