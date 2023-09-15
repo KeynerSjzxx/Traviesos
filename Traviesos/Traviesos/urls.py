@@ -10,7 +10,7 @@ urlpatterns = [
      path('carrito/', views.cart_view, name='carrito_view'),  # Asegúrate de que el
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
-    path('prod_carro/', facturacion_views.carrito_view, name='carrito'),
+    path('prod_carro/', facturacion_views.cart_view, name='carrito'),
     path('juguetes', facturacion_views.juguetes, name='juguetes'),
     path('camas', facturacion_views.camas, name='camas_muebles'),
     path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
@@ -23,5 +23,5 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('comentarios', pqrs_views.coment, name='coment'),
-    path('carroto/', include('carts.urls')),
+    path('carrito/', include('carts.urls')),
 ]

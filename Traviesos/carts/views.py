@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect  # Añade "redirect" para redirigi
 from inventario.models import Producto
 from .models import Cart
 from .utils import get_or_create_cart
-from .models import Cart  # Importa el modelo Cart
 
 def cart_view(request):
     user = request.user if request.user.is_authenticated else None
