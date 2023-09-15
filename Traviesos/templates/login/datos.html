@@ -14,20 +14,47 @@
     <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
     <title>Datos</title>
 </head>
-<body>
-    <div class="flex justify-center mt-24">
-        <form class="bg-amber-100 border-1 p-4" method="post">
+<body class="img">
+    <div class="flex justify-center mt-12">
+        <form class="bg-gray-600 text-white border-1 p-4 rounded-md shadow-md" method="post">
             <h1 class="mb-2 fs-5 text-center p-2">Registro de Información Adicional</h1>
             {% csrf_token %}
-            {{ formulario.Nombre_completo.label_tag }} {{ formulario.Nombre_completo }}
-            {{ formulario.Fecha_nacimiento.label_tag }} {{ formulario.Fecha_nacimiento }}
-            {{ formulario.Correo.label_tag }} {{ formulario.Correo }}
-            {{ formulario.Numero_telefonico.label_tag }} {{ formulario.Numero_telefonico }}
-            {{ formulario.Dirreccion_recidencia.label_tag }} {{ formulario.Dirreccion_recidencia }}
-            {{ formulario.Numero_tarjeta.label_tag }} {{ formulario.Numero_tarjeta }}
-            {{ formulario.cvv.label_tag }} {{ formulario.cvv }}
-            <div class="text-end">
-                <button class="p-2 border-1 border-black rounded-md hover:bg-white hover:text-gray-400" type="submit">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+            
+            <div class="form-group flex space-x-4">
+                <input type="text" name="{{ formulario.Nombre_completo.name }}" id="{{ formulario.Nombre_completo.id_for_label }}" class="form-control" placeholder="Ingresa tu nombre completo">
+                <input type="date" name="{{ formulario.Fecha_nacimiento.name }}" id="{{ formulario.Fecha_nacimiento.id_for_label }}" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="{{ formulario.Correo.id_for_label }}" class="font-bold">Correo Electrónico</label>
+                <input type="email" name="{{ formulario.Correo.name }}" id="{{ formulario.Correo.id_for_label }}" class="form-control" placeholder="Ingresa tu correo electrónico">
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ formulario.Numero_telefonico.id_for_label }}" class="font-bold">Número Telefónico</label>
+                <input type="text" name="{{ formulario.Numero_telefonico.name }}" id="{{ formulario.Numero_telefonico.id_for_label }}" class="form-control" placeholder="Ingresa tu número telefónico">
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ formulario.Dirreccion_recidencia.id_for_label }}" class="font-bold">Dirección de Residencia</label>
+                <input type="text" name="{{ formulario.Dirreccion_recidencia.name }}" id="{{ formulario.Dirreccion_recidencia.id_for_label }}" class="form-control" placeholder="Ingresa tu dirección de residencia">
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ formulario.Numero_tarjeta.id_for_label }}" class="font-bold">Número de Tarjeta</label>
+                <input type="text" name="{{ formulario.Numero_tarjeta.name }}" id="{{ formulario.Numero_tarjeta.id_for_label }}" class="form-control" placeholder="Ingresa tu número de tarjeta">
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ formulario.cvv.id_for_label }}" class="font-bold">CVV</label>
+                <input type="text" name="{{ formulario.cvv.name }}" id="{{ formulario.cvv.id_for_label }}" class="form-control" placeholder="Ingresa el CVV">
+            </div>
+            <div class="flex space-x-64 mt-4">
+                <div>
+                    <a class="hover:underline font-bold" href="{% url 'perfil' %}"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+                </div>
+                <div class="text-end">
+                    <button class="p-2 border-1 border-white bg-gray-500 rounded-md hover:bg-gray-800 hover:text-white" type="submit">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+                </div>
             </div>
         </form>
         

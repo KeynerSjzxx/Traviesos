@@ -21,8 +21,15 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('datos', views.registro_informacion_adicional, name='datos'),
+<<<<<<< HEAD
     path('citas/mascotas', citas_views.agregar_mascota, name='mascota'),
     path('citas/lista_citas', citas_views.ver_citas, name='lista_citas'),
     path('citas/datos_mascotas', citas_views.datos_mascota, name='datos_mascota'),
     
 ]
+=======
+    path('registro/', views.registro, name='registro'),
+    path('perfil', views.perfil, name='perfil'),
+    path('comentarios', pqrs_views.coment, name='coment'),
+]
+>>>>>>> fa412d6474a7a921ff1b0b6f166109d061280eb8
