@@ -13,7 +13,7 @@ urlpatterns = [
     path('juguetes', facturacion_views.juguetes, name='juguetes'),
     path('camas', facturacion_views.camas, name='camas_muebles'),
     path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
-    path('citas', citas_views.formulario_agendar, name='citas'),
+    path('citas/citas', citas_views.formulario_agendar, name='citas'),
     path('pqrs', pqrs_views.formulario_pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
     path('perfil', views.perfil, name='perfil'),
@@ -22,6 +22,7 @@ urlpatterns = [
     path('perfil', views.perfil, name='perfil'),
     path('datos', views.registro_informacion_adicional, name='datos'),
     path('citas/mascotas', citas_views.agregar_mascota, name='mascota'),
+    path('citas/lista_citas', citas_views.ver_citas, name='lista_citas'),
     path('citas/datos_mascotas', citas_views.datos_mascota, name='datos_mascota'),
     
 ]

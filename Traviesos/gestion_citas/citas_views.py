@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import FormAgendarCita, informacion_mascota
 from django.contrib.auth.decorators import login_required
-from .models import Mascota
+from .models import Mascota, AgendarCita
 
 @login_required
 def formulario_agendar(request):
@@ -24,6 +24,7 @@ def formulario_agendar(request):
     context = {'form': form}
     return render(request, 'citas/citas.html', context)
 
+
 def datos_mascota(request):
     if request.method == 'POST':
         formulario2 = informacion_mascota(request.POST)
@@ -42,4 +43,9 @@ def agregar_mascota(request):
     lista = Mascota.objects.all()
     print(lista)
     return render(request, 'citas/mascota.html', {'lista': lista})
+
+def ver_citas(request):
+    citas = AgendarCita.objects.all()
+    print(citas)
+    return render(request, 'citas/lista_citas.html', {'citas': citas})
     

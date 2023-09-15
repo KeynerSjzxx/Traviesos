@@ -15,7 +15,7 @@
     <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
     <title>Perfil</title>
     </head>
-    <body class="bg-gray-200">
+    <body class="bg-orange-50">
         <div class="flex">
             <aside class="sidebar bg-gray-800 text-white h-screen fixed top-0 left-0 overflow-y-auto">
                 <div class="p-4">
@@ -23,6 +23,8 @@
                     <ul class="mt-4">
                         <li class="py-2 hover:bg-gray-700"><a href="#datos"><i class="bi bi-person-fill-gear"></i> Tus Datos</a></li>
                         <li class="py-2 hover:bg-gray-700"><a href="citas/mascotas"><i class="fa-solid fa-dog"></i>  Tus mascotas</a></li>
+                        <li class="py-2 hover:bg-gray-700"><a href="citas/lista_citas"><i class="fa-sharp fa-solid fa-clipboard-list"></i>  Tus citas</a></li>
+
                     </ul>
                 </div>
             </aside>
@@ -30,17 +32,17 @@
         <section id="datos">
             {% if informacion_adicional %}
             <div class="text-end">
-                <a class="border-1 border-green-500 p-2 rounded-md text-green-500 hover:bg-green-500 hover:text-white" href="{% url 'datos' %}">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
+                <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="{% url 'datos' %}">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
             </div>
             <div class="mt-32">
-                <h1 class="fs-4">Tus datos, {{user.username}}</h1>
-                <p class="fs-5">Nombre Completo: {{ informacion_adicional.Nombre_completo }}</p>
-                <p class="fs-5">Fecha de Nacimiento: {{ informacion_adicional.Fecha_nacimiento }}</p>
-                <p class="fs-5">Correo: {{ informacion_adicional.Correo }}</p>
-                <p class="fs-5">Número Telefónico: {{ informacion_adicional.Numero_telefonico }}</p>
-                <p class="fs-5">Dirección de Residencia: {{ informacion_adicional.Dirreccion_recidencia }}</p>
-                <p class="fs-5">Número de Tarjeta: {{ informacion_adicional.Numero_tarjeta }}</p>
-                <p class="fs-5">CVV: {{ informacion_adicional.cvv }}</p>
+                <h1 class="h2">Tus datos, {{user.username}}</h1><br>
+                <b><p class="form-label">Nombre Completo:</b> {{ informacion_adicional.Nombre_completo }}</p><br>
+                <b><p class="form-label">Fecha de Nacimiento:</b> {{ informacion_adicional.Fecha_nacimiento }}</p><br>
+                <b><p class="form-label">Correo:</b> {{ informacion_adicional.Correo }}</p><br>
+                <b><p class="form-label">Número Telefónico:</b> {{ informacion_adicional.Numero_telefonico }}</p><br>
+                <b><p class="form-label">Dirección de Residencia:</b> {{ informacion_adicional.Dirreccion_recidencia }}</p><br>
+                <b><p class="form-label">Número de Tarjeta:</b> {{ informacion_adicional.Numero_tarjeta }}</p><br>
+                <b><p class="form-label">CVV:</b> {{ informacion_adicional.cvv }}</p><br>
             </div>
         {% else %}
             <a class="border-1 border-blue-500 p-2 rounded-md text-blue-500 hover:bg-blue-500 hover:text-white" href="{% url 'datos' %}">Agregar datos <i class="fa-regular fa-user"></i></a>
