@@ -7,8 +7,20 @@ from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
 
 def cart_view(request):
-    # Tu lógica para la vista del carrito aquí
-    return render(request, 'landing/cart.html')  # Asegúrate de ajustar la plantilla y la lógica según tus necesidades
+    
+    return render(request, 'landing/cart.html')  
+
+def juguetes(request):
+    
+    return render(request, 'juguetes.html')
+
+def camas_muebles(request):
+    
+    return render(request, 'camas_muebles.html')
+
+def ropas_accesorios(request):
+    
+    return render(request, 'ropas_accesorios.html')
 
 def index (request):
     return render(request, 'index.html')

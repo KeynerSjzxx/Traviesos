@@ -5,12 +5,12 @@ from .models import Cart  # Cambia "cart" a "Cart" para que coincida con el nomb
 
 def cart_view(request):  # Cambia el nombre de la vista a "cart_view" para evitar conflictos con el nombre del modelo
     user = request.user if request.user.is_authenticated else None
-    cart_id = request.session.get('cart_id')
-    cart_instance = Cart.objects.filter(cart_id=cart_id).first()  # Cambia "cart" a "Cart"
+    product_id = request.session.get('product_id')
+    cart_instance = Cart.objects.filter(product_id=product_id).first()  # Cambia "cart" a "Cart"
 
     if cart_instance is None:
         cart_instance = Cart.objects.create(user=user)
-        request.session['cart_id'] = cart_instance.cart_id
+        request.session['product_id'] = cart_instance.product_id
 
     return render(request, 'carrito/carrito.html', {
         'cart': cart_instance  # Pasa el carrito a la plantilla

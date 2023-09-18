@@ -2,13 +2,7 @@ from django.db import models
 from inventario.models import Producto
 from carts.models import Cart
 from inventario.models import Compras
-from django.contrib.auth.models import User as BaseUser
-
-class User(BaseUser):
-    # tus campos personalizados aquí
-
-    class Meta:
-        # ...
+from django.contrib.auth.models import User 
 
 # Agrega el related_name personalizado en la relación ForeignKey
 class Cart(models.Model):

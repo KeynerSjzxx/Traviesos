@@ -7,7 +7,10 @@ from PQRS import pqrs_views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin:index'),
-     path('carrito/', views.cart_view, name='carrito_view'),  # Asegúrate de que el
+     path('carrito/', views.cart_view, name='carrito_view'),
+     path('juguetes/', views.juguetes, name='juguetes'),
+     path('camas_muebles/', views.juguetes, name='camas_muebles'),
+     path('ropas_accesorios/', views.juguetes, name='ropas_accesorios'),
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
     path('prod_carro/', facturacion_views.cart_view, name='carrito'),

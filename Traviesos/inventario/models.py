@@ -33,7 +33,7 @@ class Compras(models.Model):
     class Meta:
         verbose_name = 'Compra producto'
         verbose_name_plural = 'Categorias producto'
-        db_table = 'categorias'
+        db_table = 'compras'
         ordering = ['id'] 
 
 class Producto(models.Model):
