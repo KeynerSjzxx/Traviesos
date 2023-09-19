@@ -19,3 +19,4 @@ class pqrstAdmin(admin.ModelAdmin):
     search_fields = ('create_at',)
     list_filter = ('Tipo_pqrs',)
     list_per_page = 10
+    
