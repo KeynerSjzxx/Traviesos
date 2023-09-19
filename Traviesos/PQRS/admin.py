@@ -11,10 +11,11 @@ class estadoAdmin(ImportExportModelAdmin):
 @admin.register(Tipo_pqrs)
 class tipoAdmin(ImportExportModelAdmin):
     resource_class = PqrsResource
-
+    
 @admin.register(PQRS)
 class pqrstAdmin(admin.ModelAdmin):
-    list_display = ('Tipo_pqrs', 'create_at', 'correo', 'descripcion')
+    list_display = ('Tipo_pqrs', 'create_at', 'Nombre', 'Descripcion', 'Respuesta', 'Estado_pqrs')
+    list_editable = ('Respuesta',)
     search_fields = ('create_at',)
     list_filter = ('Tipo_pqrs',)
     list_per_page = 10
