@@ -41,10 +41,6 @@ class Mascota(models.Model):
         verbose_name_plural = 'Mascotas'
         db_table = 'mascota'
         ordering = ['id']
-        
-        
-
-        
 
 class AgendarCita(models.Model):
     tipo_cita = [

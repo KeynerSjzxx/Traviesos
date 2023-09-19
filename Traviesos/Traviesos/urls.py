@@ -1,35 +1,25 @@
 from django.contrib import admin
 from django.urls import path
 from landing import views
-from facturacion import facturacion_views
+from django.urls import include
 from gestion_citas import citas_views
 from PQRS import pqrs_views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin:index'),
+    path('carrito/', include('carts.urls')),
+    path('juguetes/', views.juguetes, name='juguetes'),
+    path('camas_muebles/', views.juguetes, name='camas_muebles'),
+    path('ropas_accesorios/', views.juguetes, name='ropas_accesorios'),
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
-    path('carrito', facturacion_views.carrito_view, name='carrito'),
-    path('juguetes', facturacion_views.juguetes, name='juguetes'),
-    path('camas', facturacion_views.camas, name='camas_muebles'),
-    path('ropa', facturacion_views.ropa, name='ropas_accesorios'),
-    path('citas/citas', citas_views.formulario_agendar, name='citas'),
-    path('pqrs', pqrs_views.formulario_pqrs, name='pqrs'),
+    path('citas', citas_views.formulario_agendar, name='citas'),
+    path('pqrs', pqrs_views.pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
-    path('perfil', views.perfil, name='perfil'),
-    path('form.html', pqrs_views.formulario_pqrs, name='pqrs_form'),
     path('registro/', views.registro, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('datos', views.registro_informacion_adicional, name='datos'),
-<<<<<<< HEAD
-    path('citas/mascotas', citas_views.agregar_mascota, name='mascota'),
-    path('citas/lista_citas', citas_views.ver_citas, name='lista_citas'),
-    path('citas/datos_mascotas', citas_views.datos_mascota, name='datos_mascota'),
-    
-]
-=======
     path('registro/', views.registro, name='registro'),
     path('perfil', views.perfil, name='perfil'),
     path('comentarios', pqrs_views.coment, name='coment'),
 ]
->>>>>>> fa412d6474a7a921ff1b0b6f166109d061280eb8

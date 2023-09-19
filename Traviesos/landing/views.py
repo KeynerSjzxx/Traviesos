@@ -6,6 +6,22 @@ from django.contrib.auth.decorators import login_required
 from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
 
+def cart_view(request):
+    
+    return render(request, 'landing/cart.html')  
+
+def juguetes(request):
+    
+    return render(request, 'juguetes.html')
+
+def camas_muebles(request):
+    
+    return render(request, 'camas_muebles.html')
+
+def ropas_accesorios(request):
+    
+    return render(request, 'ropas_accesorios.html')
+
 def index (request):
     return render(request, 'index.html')
 
