@@ -45,7 +45,7 @@ def actualizar_estado(sender, instance, **kwargs):
         estado_respuesta = Estado.objects.get(Estado_pqrs="Respuesta")
         instance.Estado_pqrs = estado_respuesta
         instance.save()
-    
+
     class Meta:
         verbose_name = 'PQRS'
         verbose_name_plural = 'PQRS´s'
