@@ -29,46 +29,43 @@
                     <li class="py-2 hover:bg-gray-700"><a href="../perfil"><i class="bi bi-person-fill-gear"></i> Tus
                             Datos</a></li>
                     <li class="py-2 hover:bg-gray-700"><a href="mascotas"><i class="fa-solid fa-dog"></i> Tus mascotas</a></li>
-                    <li class="py-2 hover:bg-gray-700"><a href="lista_citas"><i class="fa-sharp fa-solid fa-clipboard-list"></i>  Tus citas</a></li>
+                    <li class="py-2 hover:bg-gray-700"><a href="ver_citas"><i class="fa-sharp fa-solid fa-clipboard-list"></i>  Tus citas</a></li>
                 </ul>
             </div>
         </aside>
         <main class="content p-8 ">
-            <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="datos_mascotas"><b>Agregar mascota </b><i
-                    class="fa-regular fa-user"></i></a>
             {% if lista|length < 1 %}
 
             <p>Aun no has agregado ninguna mascota.</p>
 
             {% endif %}
             <section id="datos">
+                <h1 class="h2">Hola {{user.username}}, Estos son los datos de tus mascotas</h1><br><br>
+                <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="datos_mascotas"><b>Agregar mascota </b><i
+                    class="fa-regular fa-user"></i></a>
                 {% for o in lista %}
                 <div class="mt-32">
-                    <h1 class="h2">Hola {{user.username}}, los datos de tus mascotas</h1><br>
-                    <b><p class="form-label">Nombre de la mascota:</b> {{ o.nombre }}</p><br>
-                    <b><p class="form-label">Raza de la mascota:</b> {{ o.raza }}</p><br>
-                    <b><p class="form-label">Peso de la mascota:</b> {{ o.peso }}</p><br>
-                    <b><p class="form-label">Tamaño de la mascota:</b> {{ o.Tamaño }}</p><br>
-                    <b><p class="form-label">Edad de la mascota:</b> {{ o.edad }}</p><br>
-                    <b><p class="form-label">Fecha de nacimiento de la mascota:</b> {{ o.fecha_nacimiento }}
+                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p><br>
+                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p><br>
+                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p><br>
+                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.Tamaño }}</p><br>
+                    <b><p class="form-label">Edad de tu mascota:</b> {{ o.edad }}</p><br>
+                    <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange"
+                            href="datos_mascotas"><b>Editar detalles</b> <i class="fa-solid fa-file-pen"></i></a>
                     </p><br>
-                    <div class="text-end">
-                        <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange"
-                            href="datos_mascotas">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
-                    </div>
+                    
                 </div>
                 {% endfor %}
             </section>
             <section id="">
-                {% for c in citas %}
+                {% for o in citas %}
                 <div class="mt-32">
                     <h1 class="fs-4">Tus datos, {{user.username}}</h1>
-                    <p class="fs-5">Tipo de cita: {{ c.Tipo_cita }}</p>
-                    <p class="fs-5">Nombre de la mascota: {{ c.Nombre }}</p>
-                    <p class="fs-5">Fecha de la cita: {{ c.Fecha }}</p>
-                    <p class="fs-5">Hora de la cita: {{ c.Hora }}</p>
-                    <p class="fs-5">Numero de contacto: {{ c.Telefono }}</p>
-                    <p class="fs-5">Descripcion: {{ c.descripcion }}
+                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p><br>
+                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p><br>
+                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p><br>
+                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.Tamaño }}</p><br>
+                    <b><p class="form-label">Edad de tu mascota:</b> {{ o.edad }}</p><br>
                     </p><br>
                     <div class="text-end">
                         <a class="border-1 border-orange-500 p-2 rounded-md text-black-500 hover:bg-orange-200 hover:text-orange"

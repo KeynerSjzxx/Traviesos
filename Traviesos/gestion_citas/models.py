@@ -31,7 +31,6 @@ class Mascota(models.Model):
     peso = models.CharField(max_length=30, default='0')
     Tamaño = models.ForeignKey(Tamaño, on_delete=models.CASCADE)
     edad =  models.IntegerField(verbose_name='Edad', default=0)
-    fecha_nacimiento = models.DateField(verbose_name='Fecha de nacimiento', default='2000-01-01')
     
     def __str__(self):
         return self.nombre

@@ -16,4 +16,4 @@ class FormAgendarCita(forms.ModelForm):
 class informacion_mascota(forms.ModelForm):
         class Meta:
             model = Mascota
-            fields = ['nombre','raza','peso','Tamaño','edad','fecha_nacimiento']
+            fields = ['nombre','raza','peso','Tamaño','edad']

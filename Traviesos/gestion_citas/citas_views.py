@@ -33,7 +33,7 @@ def datos_mascota(request):
             informacion_mascotas.user = request.user
             informacion_mascotas.save()
             messages.success(request, 'Tu información adicional se ha guardado correctamente.')
-            return redirect('mascota') 
+            return redirect('agregar_mascotas') 
     
     else:
         formulario2 = informacion_mascota()
