@@ -46,7 +46,7 @@
 
 <body class="bg-orange-50">
   <div class="container"><br><br><br><br><br><br>
-    <h1 style="font-size: 30px;">Agendar cita</h1><br>
+    <h1 style="font-size: 30px;">Agendar cita</h1><br><br>
     {% if messages %}
     <div class="row">
       {% for message in messages %}
@@ -60,48 +60,52 @@
     <form method="POST" action="">
       {% csrf_token %}
       <div class="row mb-3">
-        <div class="col-md-12">
-          <label for="tipo" class="form-label"><b>Tipo de cita</b></label>
-          <select class="form-select" name="Tipo_cita" id="tipo" aria-label="Default select example" required>
-            <option value="" selected>Seleccionar</option>
-            <option value="Baño">Baño</option>
-            <option value="Peluqueria">Peluqueria</option>
-            <option value="Baño y Peluqueria">Baño y Peluqueria</option>
-          </select>
           <div class="col-md-6">
-            <label for="{{ form.Nombre.id_for_label }}" class="form-label"><b>Nombre de la mascota</b></label>
-            {{ form.Nombre }}
+              <label for="tipo" class="form-label"><b>Tipo de cita</b></label>
+              <select class="form-select" name="Tipo_cita" id="tipo" aria-label="Default select example" required>
+                  <option value="" selected>Seleccionar</option>
+                  <option value="Baño">Baño</option>
+                  <option value="Peluqueria">Peluqueria</option>
+                  <option value="Baño y Peluqueria">Baño y Peluqueria</option>
+              </select><br>
           </div>
           <div class="col-md-6">
-            <label for="fecha_cita" class="form-label"><b>Fecha de la cita</b></label>
-            <input type="date" name="Fecha" class="form-control" min="2023-08-29" max="2023-12-31" required>
+              <label for="{{ form.Nombre.id_for_label }}" class="form-label"><b>Nombre de la mascota</b></label>
+              {{ form.Nombre }}
           </div>
-          <div class="row mb-3">
-            <div class="col-md-6">
+      </div>
+      <div class="row mb-3">
+          <div class="col-md-6">
+              <label for="fecha_cita" class="form-label"><b>Fecha de la cita</b></label>
+              <input type="date" name="Fecha" class="form-control" min="2023-08-29" max="2023-12-31" required>
+          </div>
+          <div class="col-md-6">
               <label for="hora_cita" class="form-label"><b>Hora de la cita</b></label>
               <input type="time" name="Hora" class="form-control" min="09:00" max="19:00" required>
-            </div>
-            <div class="col-md-6">
+          </div>
+      </div><br>
+      <div class="row mb-3">
+          <div class="col-md-6">
               <label for="numero_contacto" class="form-label"><b>Número de contacto</b></label>
               <input type="text" name="Telefono" class="form-control" maxlength="10" minlength="10" inputmode="numeric"
-                pattern="[0-9]{10}" required>
-            </div>
+                  pattern="[0-9]{10}" required>
           </div>
-          <div class="row mb-3">
-            <div class="col-md-12">
+          <div class="col-md-6">
               <label for="descripcion" class="form-label"><b>Descripción de la mascota</b></label>
               <textarea class="form-control" name="descripcion"
-                placeholder="Describe a tu mascota (cariñoso, jugueton, agresivo, imperactivo, etc..)" id="descripcion"
-                cols="100" style="height: 100px"></textarea>
-            </div>
+                  placeholder="Danos una breve descripción de la personalidad de tu mascota."
+                  id="descripcion" cols="100" style="height: 40px"></textarea>
           </div>
-          <div class="d-grid gap-2">
-            <button class="p-2 border-2 border-black rounded-md hover:bg-orange hover:text-orange-200" type="submit" value="Submit"><b>Enviar</b></button>
-          </div>
-    </form>
-  </div>
+      </div><br>
+      <ul class="bg-red">
+        <li><a href="{% url 'agregar_mascotas' %}" style="color: red;">Aun no tienes una mascota registrada?</a></li>
+      </ul>
+      <div class="d-grid gap-2"><br><br>
+          <button class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black" type="submit"
+              value="Submit"><b>Enviar</b></button>
+      </div>
+  </form>
+  
 </body>
-
-</html>
 
 </html>

@@ -41,23 +41,23 @@
         </div>
       </nav>
     </header>
-    <body class="bg-orange-50">
+    <body class="bg-orange-100">
       <main class="content p-8 ">
         <div class="flex">
-            <aside class="sidebar bg-gray-800 text-white h-screen fixed top-0 left-0 overflow-y-auto">
+            <aside class="sidebar bg-orange-200 text-black h-screen fixed top-0 left-0 overflow-y-auto">
                 <div class="p-4"><br><br>
-                    <h1 class="fs-5 font-semibold">¡Bienvenido a tu perfil, {{ user.username }}!</h1>
                     <ul class="mt-4">
-                        <li class="py-2 hover:bg-gray-700"> <a href="{% url 'perfil' %}"><i class="bi bi-person-fill-gear"></i> Tus Datos</a></li>
-                        <li class="py-2 hover:bg-gray-700"> <a href="mascotas"><i class="fa-solid fa-dog"></i>  Tus mascotas</a></li>
-                        <li class="py-2 hover:bg-gray-700"><a href="citas/lista_citas"><i class="fa-sharp fa-solid fa-clipboard-list"></i>  Tus citas</a></li>
+                        <li class="py-2 hover:bg-orange-300"> <a href="{% url 'perfil' %}"><i class="bi bi-person-fill-gear"></i><b> Tus Datos</b></a></li>
+                        <li class="py-2 hover:bg-orange-300"> <a href="mascotas"><i class="fa-solid fa-dog"></i><b>  Tus mascotas</b></a></li>
+                        <li class="py-2 hover:bg-orange-300"><a href="citas/lista_citas"><i class="fa-sharp fa-solid fa-clipboard-list"></i> <b> Tus citas</a></li>
                     </ul>
                 </div>
             </aside>
             
               <div class="flex justify-center mt-24">
                   <form class="bg-amber-100 border-1 p-4" method="post">
-                      <h1 class="mb-2 fs-5 text-center p-2">Registro de Información Adicional</h1>
+                    <h1 class="mb-2 fs-5 text-center p-2" font-semibold> ¡Hola {{ user.username }} agrega a tu mascota!</h1>
+                      <h1 class="fs-5 font-semibold">Datos de tu mascota:</h1><br>
                       {% csrf_token %}
                       {{ formulario.nombre.label_tag }} {{ formulario.nombre }}
                       {{ formulario.raza.label_tag }} {{ formulario.raza }}

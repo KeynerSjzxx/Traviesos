@@ -16,6 +16,7 @@ urlpatterns = [
     path('perfil/citas/mascotas/datos_mascotas', citas_views.datos_mascota, name='datos_mascotas'),
     path('perfil/citas/mascotas/', citas_views.agregar_mascota, name='agregar_mascotas'),
     path('perfil/citas/mascotas/citas/lista_citas', citas_views.ver_citas, name='ver_citas'),
+    path('eliminar_mascota/<int:mascota_id>/',citas_views.eliminar_mascota, name='eliminar_mascota'),
     path('pqrs/', pqrs_views.pqrs, name='pqrs'),
     path('logout/', views.logout_view, name='logout'),
     path('registro/', views.registro, name='registro'),
