@@ -67,18 +67,16 @@
                 <b>Agregar mascota</b><i class="fa-solid fa-plus"></i>
             </a><br><br><br>
         {% endif %}
-        
-                
-                
+
                 {% for o in lista %}
                 <div class="mt-30">
                     <h1 class="h2">Hola {{user.username}}, Estos son los datos de tus mascotas</h1><br>
-                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p><br>
-                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p><br>
-                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p><br>
-                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.tamano }}</p><br>
+                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p>
+                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p>
+                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p>
+                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.tamano }}</p>
                     <b><p class="form-label">Edad de tu mascota:</b> {{ o.edad }}</p><br>
-                    <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href=""><b>Editar detalles</b> <i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="{% url 'editar_mascota' o.id %}"><b>Actualizar detalles</b> <i class="fa-solid fa-pen-to-square"></i></a>
                     <form action="{% url 'eliminar_mascota' o.id %}" method="post"><br>
                         {% csrf_token %}
                         <button class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" type="submit"><b>Eliminar mascota</b> <i class="fa-solid fa-trash"></i></button>

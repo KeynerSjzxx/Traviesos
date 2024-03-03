@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Tamano(models.Model):
     Tamaño = models.CharField(max_length=30)
@@ -25,6 +26,7 @@ class Raza(models.Model):
         ordering = ['id']     
 
 class Mascota(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     nombre = models.CharField(max_length=30, unique=True)
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
     peso = models.CharField(max_length=30, default='0')
