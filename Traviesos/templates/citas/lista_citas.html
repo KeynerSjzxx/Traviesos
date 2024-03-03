@@ -26,10 +26,9 @@
             <div class="p-4">
                 <h1 class="fs-5 font-semibold">¡Bienvenido a tu perfil, {{ user.username }}!</h1>
                 <ul class="mt-4">
-                    <li class="py-2 hover:bg-gray-700"><a href="#datos"><i class="bi bi-person-fill-gear"></i> Tus
-                            Datos</a></li>
-                    <li class="py-2 hover:bg-gray-700"><a href=""><i class="fa-solid fa-dog"></i> Tus mascotas</a></li>
-                    <li class="py-2 hover:bg-gray-700"><a href="citas/lista_citas"><i class="fa-sharp fa-solid fa-clipboard-list"></i>  Tus citas</a></li>
+                    <li class="py-2 hover:bg-orange-300"> <a href="{% url 'perfil' %}"><i class="bi bi-person-fill-gear"></i><b> Tus Datos</b></a></li>
+                    <li class="py-2 hover:bg-orange-300"> <a href="{% url 'agregar_mascotas' %}"><i class="fa-solid fa-dog"></i><b>  Tus mascotas</b></a></li>
+                    <li class="py-2 hover:bg-orange-300"><a href="{% url 'ver_citas' %}"><i class="fa-sharp fa-solid fa-clipboard-list"></i> <b> Tus citas</a></li>
                 </ul>
             </div>
         </aside>
@@ -41,22 +40,21 @@
             <p>Aun no tienes citas.</p>
 
             {% endif %}
-            <section id="datos">
+            <section id="datos"><br>
                 {% for c in citas %}
-                <div class="mt-32">
-                    <h1 class="h2">Tus citas, {{user.username}}</h1><br>
-                    <b><p class="fs-5">Tipo de cita:</b> {{ c.Tipo_cita }}</p><br>
-                    <b><p class="fs-5">Nombre de la mascota:</b> {{ c.Nombre }}</p><br>
-                    <b><p class="fs-5">Fecha de la cita:</b> {{ c.Fecha }}</p><br>
-                    <b><p class="fs-5">Hora de la cita:</b> {{ c.Hora }}</p><br>
-                    <b><p class="fs-5">Numero de contacto:</b> {{ c.Telefono }}</p><br>
-                    <b> <p class="fs-5">Descripcion:</b> {{ c.descripcion }}<br>
-                    </p><br>
-                    <div class="text-end">
-                        <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange"
-                            href="citas"><b>Actualiza tus datos</b> <i class="fa-solid fa-file-pen"></i></a>
+                    <div class="mt-30">
+                        <h1 class="h2">{{user.username}}, estas son las citas de tus mascotas</h1><br>
+                        <p class="fs-6"><b>Tipo de cita:</b> {{ c.Tipo_cita }}</p><br>
+                        <p class="fs-6"><b>Nombre de la mascota:</b> {{ c.Nombre }}</p><br>
+                        <p class="fs-6"><b>Fecha de la cita:</b> {{ c.Fecha }}</p><br>
+                        <p class="fs-6"><b>Hora de la cita:</b> {{ c.Hora }}</p><br>
+                        <p class="fs-6"><b>Numero de contacto:</b> {{ c.Telefono }}</p><br>
+                        <p class="fs-6"><b>Descripcion:</b> {{ c.descripcion }}<br></p><br>
+                        <div class="text-end">
+                            <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange"
+                                href="citas"><b>Actualiza tus datos</b> <i class="fa-solid fa-file-pen"></i></a>
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
             </section>
         </main>
