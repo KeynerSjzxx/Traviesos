@@ -32,13 +32,14 @@ class Compras(models.Model):
     
     class Meta:
         verbose_name = 'Compra producto'
-        verbose_name_plural = 'Categorias producto'
+        verbose_name_plural = 'Compras   producto'
         db_table = 'compras'
         ordering = ['id'] 
 
 class Producto(models.Model):
     Nombre_producto = models.CharField(max_length=30)
     Precio_producto = models.DecimalField(max_digits=10, decimal_places=2)
+    Stock_producto = models.CharField(max_length=100)
     Imagen_producto = models.CharField(max_length=100)
     Descripcion_producto = models.CharField(max_length=50)
     Id_marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
@@ -52,20 +53,7 @@ class Producto(models.Model):
         verbose_name_plural = 'Productos'
         db_table = 'productos'
         ordering = ['id']
-
-class Stock(models.Model):
-    Id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    Stock_Cantidad = models.IntegerField()
-    
-    def __str__(self):
-        return self.Id_producto
-    
-    class Meta:
-        verbose_name = 'Stock'
-        verbose_name_plural = 'Stocks'
-        db_table = 'stocks'
-        ordering = ['id']
-
+        
 class Proveedor(models.Model):
     Nombre_proveedor = models.CharField(max_length=30)
     Apellido_proveedor = models.CharField(max_length=30)
