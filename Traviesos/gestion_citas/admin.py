@@ -1,9 +1,9 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import AgendarCita, Mascota, Tamaño, Raza
+from .models import AgendarCita, Mascota, Tamano, Raza
 # Register your models here.
 
-@admin.register(Tamaño)
+@admin.register(Tamano)
 class TamañoAdmin(ImportExportModelAdmin):
     pass
 
@@ -13,9 +13,9 @@ class RazaAdmin(ImportExportModelAdmin):
 
 @admin.register(Mascota)
 class MacotaAdmin(admin.ModelAdmin):
-    list_display = ('id','nombre', 'raza', 'peso', 'Tamaño', 'edad')
-    list_editable = ('peso', 'Tamaño','edad',)
-    search_fields = ('raza', 'Tamaño',)
+    list_display = ('id','nombre', 'raza', 'peso', 'tamano', 'edad')
+    list_editable = ('peso', 'tamano','edad',)
+    search_fields = ('raza', 'tamano',)
     list_filter = ('raza',)
     list_per_page = 10
 

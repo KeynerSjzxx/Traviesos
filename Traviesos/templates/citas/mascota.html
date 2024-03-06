@@ -50,52 +50,37 @@
         <aside class="sidebar bg-orange-200 text-black h-screen fixed top-0 left-0 overflow-y-auto">
             <div class="p-4">
                 <ul class="mt-4"><br><br>
-                    <li class="py-2 hover:bg-orange-300"><a href="../perfil"><b><i class="bi bi-person-fill-gear"></i> Tus Datos</b></a></li>
-                    <li class="py-2 hover:bg-orange-300"><a href="mascotas"><b><i class="fa-solid fa-dog"></i> Tus mascotas</b></a></li>
-                    <li class="py-2 hover:bg-orange-300"><a href="ver_citas"><b><i class="fa-sharp fa-solid fa-clipboard-list"></i>  Tus citas</b></a></li>
+                    <li class="py-2 hover:bg-orange-300"> <a href="{% url 'perfil' %}"><i class="bi bi-person-fill-gear"></i><b> Tus Datos</b></a></li>
+                    <li class="py-2 hover:bg-orange-300"> <a href="{% url 'agregar_mascotas' %}"><i class="fa-solid fa-dog"></i><b>  Tus mascotas</b></a></li>
+                    <li class="py-2 hover:bg-orange-300"><a href="{% url 'ver_citas' %}"><i class="fa-sharp fa-solid fa-clipboard-list"></i> <b> Tus citas</a></li>
                 </ul>
             </div>
         </aside>
         <main class="content p-8 ">
             {% if lista|length < 1 %}
-
             <p>Aun no has agregado ninguna mascota.</p><br>
-            <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="datos_mascotas"><b>Agregar mascota </b><i
-                class="fa-solid fa-plus"></i></a><br>
-            {% endif %}
-            <section id="datos">
+            <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="datos_mascotas">
+                <b>Agregar mascota</b><i class="fa-solid fa-plus"></i>
+            </a><br>
+        {% else %}
+            <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="datos_mascotas">
+                <b>Agregar mascota</b><i class="fa-solid fa-plus"></i>
+            </a><br><br><br>
+        {% endif %}
+
                 {% for o in lista %}
                 <div class="mt-30">
-                    <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="datos_mascotas"><b>Agregar mascota </b><i
-                        class="fa-solid fa-plus"></i></a><br><br>
-                    <h1 class="h2">Hola {{user.username}}, Estos son los datos de tus mascotas</h1><br><br>
-                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p><br>
-                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p><br>
-                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p><br>
-                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.Tamaño }}</p><br>
+                    <h1 class="h2">Hola {{user.username}}, Estos son los datos de tus mascotas</h1><br>
+                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p>
+                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p>
+                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p>
+                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.tamano }}</p>
                     <b><p class="form-label">Edad de tu mascota:</b> {{ o.edad }}</p><br>
-                    <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href=""><b>Editar detalles</b> <i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="{% url 'editar_mascota' o.id %}"><b>Actualizar detalles</b> <i class="fa-solid fa-pen-to-square"></i></a>
                     <form action="{% url 'eliminar_mascota' o.id %}" method="post"><br>
                         {% csrf_token %}
                         <button class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" type="submit"><b>Eliminar mascota</b> <i class="fa-solid fa-trash"></i></button>
-                    </form>        
-                </div>
-                {% endfor %}
-            </section>
-            <section id="">
-                {% for o in citas %}
-                <div class="mt-32">
-                    <h1 class="fs-4">Tus datos, {{user.username}}</h1>
-                    <b><p class="form-label">Nombre de tu mascota:</b> {{ o.nombre }}</p><br>
-                    <b><p class="form-label">Raza de tu mascota:</b> {{ o.raza }}</p><br>
-                    <b><p class="form-label">Peso de tu mascota:</b> {{ o.peso }}</p><br>
-                    <b><p class="form-label">Tamaño de tu mascota:</b> {{ o.Tamaño }}</p><br>
-                    <b><p class="form-label">Edad de tu mascota:</b> {{ o.edad }}</p><br>
-                    </p><br>
-                    <div class="text-end">
-                        <a class="border-1 border-orange-500 p-2 rounded-md text-black-500 hover:bg-orange-200 hover:text-orange"
-                            href="datos_mascotas">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
-                    </div>
+                    </form><br><br>      
                 </div>
                 {% endfor %}
             </section>

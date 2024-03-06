@@ -1,6 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class Tamaño(models.Model):
+class Tamano(models.Model):
     Tamaño = models.CharField(max_length=30)
 
     def __str__(self):
@@ -12,25 +13,25 @@ class Tamaño(models.Model):
         db_table = 'tamaño'
         ordering = ['id']        
 
-class Raza (models.Model):
-    Raza = models.CharField(max_length=30)
+class Raza(models.Model):
+    raza = models.CharField(max_length=30)
     
     def __str__(self):
-        return self.Raza
+        return self.raza
     
     class Meta:
         verbose_name = 'Raza'
         verbose_name_plural = 'Razas'
         db_table = 'raza'
-        ordering = ['id']        
+        ordering = ['id']     
 
 class Mascota(models.Model):
-    id = models.IntegerField(primary_key= True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     nombre = models.CharField(max_length=30, unique=True)
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
     peso = models.CharField(max_length=30, default='0')
-    Tamaño = models.ForeignKey(Tamaño, on_delete=models.CASCADE)
-    edad =  models.IntegerField(verbose_name='Edad', default=0)
+    tamano = models.ForeignKey(Tamano, on_delete=models.CASCADE)
+    edad = models.IntegerField(verbose_name='Edad', default=0)
     
     def __str__(self):
         return self.nombre
@@ -40,6 +41,7 @@ class Mascota(models.Model):
         verbose_name_plural = 'Mascotas'
         db_table = 'mascota'
         ordering = ['id']
+
 
 class AgendarCita(models.Model):
     tipo_cita = [
