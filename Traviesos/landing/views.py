@@ -12,15 +12,15 @@ def cart_view(request):
 
 def juguetes(request):
     
-    return render(request, 'juguetes.html')
+    return render(request, 'productos/juguetes.html')
 
 def camas_muebles(request):
     
-    return render(request, 'camas_muebles.html')
+    return render(request, 'productos/camas_muebles.html')
 
 def ropas_accesorios(request):
     
-    return render(request, 'ropas_accesorios.html')
+    return render(request, 'productos/ropas_accesorios.html')
 
 def index (request):
     return render(request, 'index.html')

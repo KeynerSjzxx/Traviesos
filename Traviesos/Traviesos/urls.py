@@ -26,4 +26,5 @@ urlpatterns = [
     path('perfil/', views.perfil, name='perfil'),
     path('datos/', views.registro_informacion_adicional, name='datos'),
     path('comentarios/', pqrs_views.coment, name='coment'),
+    
 ]
