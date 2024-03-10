@@ -5,22 +5,24 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
+from django.views.decorators.csrf import csrf_exempt
+from inventario.models import Producto
 
 def cart_view(request):
     
     return render(request, 'landing/cart.html')  
 
 def juguetes(request):
-    
-    return render(request, 'productos/juguetes.html')
+    producto = Producto.objects.filter(Id_categoria=1)
+    return render(request, 'productos/juguetes.html', {'productos': producto})
 
 def camas_muebles(request):
-    
-    return render(request, 'productos/camas_muebles.html')
+    producto = Producto.objects.filter(Id_categoria=2)
+    return render(request, 'productos/camas_muebles.html', {'productos': producto})
 
 def ropas_accesorios(request):
-    
-    return render(request, 'productos/ropas_accesorios.html')
+    producto = Producto.objects.filter(Id_categoria=3)
+    return render(request, 'productos/ropas_accesorios.html', {'productos': producto})
 
 def index (request):
     return render(request, 'index.html')
@@ -61,7 +63,8 @@ def registro(request):
     else:
         form = UserCreationForm()
     return render(request, 'login/registro.html', {'form': form})
- 
+
+@csrf_exempt 
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')

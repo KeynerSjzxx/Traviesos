@@ -1,11 +1,11 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import Categoria, Producto, Marca, Proveedor
+from .models import Categoria, Producto, Marca
+from .models import Categoria, Producto, Marca
 from .resources import ProductoResource  # Asegúrate de importar tu recurso
 
 admin.site.register(Categoria)
 admin.site.register(Marca)
-admin.site.register(Proveedor)
 
 @admin.register(Producto)
 class ProductoAdmin(ImportExportModelAdmin):  # Utiliza ImportExportModelAdmin en lugar de admin.ModelAdmin
