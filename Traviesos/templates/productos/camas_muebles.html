@@ -48,40 +48,28 @@ crossorigin="anonymous"></script>
 <div>
     <h1 class="mt-4 fs-4 text-center">Catalogo de premios</h1>
     <div class="mt-4 grid grid-cols-4 gap-4">
-        <div class="text-center border-1 p-6 rounded-md">
-            <h1 class="fs-5">Example product...</h1>
-            <img class="h-20 border-1 my-2" src="" alt="Example image">
-            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
-            <div class="text-right">
-                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
-            </div>
+    {% for producto in productos %}
+      <div class="text-center border-1 p-6 rounded-md">
+      <h1 class="fs-5">{{ producto.Nombre_producto }}</h1>
+      <div class="grid grid-cols-2">
+      <div>
+      <img class="w-32 border-1 my-2" src="{{ producto.Imagen_producto }}" alt="{{ producto.Nombre_producto }}">
+      </div>
+      <div>
+      <p class="my-2 text-left text-gray-500">{{ producto.Descripcion_producto }}</p>
+      </div>
+      </div>
+
+        <form method="post">
+        <input type="hidden" name="product_id" value="{{ producto.id }}">
+        <button type="submit" class="btn btn-warning">Agregar al carrito</button>
+        </form>
+        <div class="mt-2">
+          <a class="btn btn-outline-success" href="">Comprar <i class="bi bi-shop-window"></i></a>
         </div>
-        <div class="text-center border-1 p-6 rounded-md">
-            <h1 class="fs-5">Example product...</h1>
-            <img class="h-20 border-1 my-2" src="" alt="Example image">
-            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
-            <div class="text-right">
-                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
-            </div>
         </div>
-        <div class="text-center border-1 p-6 rounded-md">
-            <h1 class="fs-5">Example product...</h1>
-            <img class="h-20 border-1 my-2" src="" alt="Example image">
-            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
-            <div class="text-right">
-                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
-            </div>
-        </div>
-        <div class="text-center border-1 p-6 rounded-md">
-            <h1 class="fs-5">Example product...</h1>
-            <img class="h-20 border-1 my-2" src="" alt="Example image">
-            <p class="my-2 text-left text-gray-500 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente odit reiciendis provident sunt eaque accusamus quibusdam, aperiam animi numquam possimus!</p>
-            <div class="text-right">
-                <a class="btn btn-outline-success" href="">comprar <i class="bi bi-shop-window"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
+    {% endfor %}
+</div></div>
 </main>
 </body>
 </html>

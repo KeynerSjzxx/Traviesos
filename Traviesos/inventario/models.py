@@ -53,17 +53,3 @@ class Producto(models.Model):
         verbose_name_plural = 'Productos'
         db_table = 'productos'
         ordering = ['id']
-        
-class Proveedor(models.Model):
-    Nombre_proveedor = models.CharField(max_length=30)
-    Apellido_proveedor = models.CharField(max_length=30)
-    Telefono_Proveedor = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.Nombre_proveedor
-    
-    class Meta:
-        verbose_name = 'Proveedor'
-        verbose_name_plural = 'Proveedores'
-        db_table = 'proveedores'
-        ordering = ['id']
