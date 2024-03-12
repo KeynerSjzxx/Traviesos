@@ -16,6 +16,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//code.tidio.co/kczpks5iafw7sips7x6vfgjynam1qzs0.js" async></script>
     <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_mascotas.css' %}">
     <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
     <title>Mascotas</title>
 </head>
@@ -38,6 +39,7 @@
         </div>
     </nav>
 </header>
+<div class="basic-corgi-mode"></div>
 <body class="bg-orange-50">
     <div class="flex">
         <aside class="sidebar bg-orange-200 text-black h-screen fixed top-0 left-0 overflow-y-auto">
@@ -64,7 +66,7 @@
 
                 {% for c in citas %}
                     <div class="mt-30">
-                        <p class="fs-6"><b>Tipo de cita:</b> {{ c.Tipo_cita }}</p>
+                        <p class="fs-6"><b>Tipo de cita:</b> {{ c.nombre_tipo }}</p>
                         <p class="fs-6"><b>Nombre de la mascota:</b> {{ c.Nombre }}</p>
                         <p class="fs-6"><b>Fecha de la cita:</b> {{ c.Fecha }}</p>
                         <p class="fs-6"><b>Hora de la cita:</b> {{ c.Hora }}</p>
