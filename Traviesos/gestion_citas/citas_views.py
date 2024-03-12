@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Mascota, AgendarCita
 from django.contrib.auth.models import User
 
+# Manejo formulario para agendar citas
 @login_required
 def formulario_agendar(request):
     if request.method == 'POST':
@@ -22,6 +23,7 @@ def formulario_agendar(request):
     context = {'form': form}
     return render(request, 'citas/citas.html', context)
 
+# Manejo formulario ingresar información mascotas
 @login_required
 def datos_mascota(request):
     if request.method == 'POST':
@@ -36,17 +38,18 @@ def datos_mascota(request):
         formulario2 = informacion_mascota()
     return render(request, 'citas/datos_mascotas.html', {'formulario': formulario2})
 
+# Muestra la lista de mascotas al usuario actual
 @login_required
 def agregar_mascota(request):
     lista = Mascota.objects.filter(user=request.user)
-    print(lista)
     return render(request, 'citas/mascota.html', {'lista': lista})
 
+# Muestra la lista de citas al usuario actual
 def ver_citas(request):
     citas = AgendarCita.objects.filter(Nombre__user=request.user)
-    print(citas)
     return render(request, 'citas/lista_citas.html', {'citas': citas})
 
+# Elimina una mascota al usuario actual
 @login_required
 def eliminar_mascota(request, mascota_id):
     if request.method == 'POST':
@@ -56,6 +59,7 @@ def eliminar_mascota(request, mascota_id):
     
     return render(request, 'mascota.html', {'mascota': mascota})
 
+# Edita la información de una mascota al usuario actual
 @login_required
 def editar_mascota(request, mascota_id):
     mascota = get_object_or_404(Mascota, id=mascota_id, user=request.user)
@@ -67,9 +71,9 @@ def editar_mascota(request, mascota_id):
             return redirect('agregar_mascotas')
     else:
         formulario = informacion_mascota(instance=mascota)
-        
     return render(request, 'citas/datos_mascotas.html',{'formulario':formulario})
 
+# Elimina una cita al usuario actual
 @login_required
 def eliminar_cita(request, agendarCita_id):
     if request.method == 'POST':
@@ -79,6 +83,7 @@ def eliminar_cita(request, agendarCita_id):
     
     return render(request, 'mascota.html', {'citas': citas})
 
+# Edita la información de una cita al usuario actual
 @login_required
 def editar_cita(request, agendarCita_id):
     cita = get_object_or_404(AgendarCita, id=agendarCita_id, Nombre__user=request.user)
@@ -90,5 +95,4 @@ def editar_cita(request, agendarCita_id):
             return redirect('ver_citas')
     else:
         formulario = FormAgendarCita(instance=cita)
-        
-    return render(request, 'citas/citas.html', {'formulario': formulario})
+    return render(request, 'citas/citas.html', {'form': formulario})

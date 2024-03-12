@@ -1,0 +1,18 @@
+@keyframes corgis {
+    0% {
+        background-position: 0 0, 100% 0, 100% 0, 0 0;
+    }
+
+    100% {
+        background-position: 100% 0, 0 0, 0 0, 100% 0;
+    }
+}
+
+.basic-corgi-mode {
+    animation: corgis 15s linear infinite; /* Ajustar la duración según sea necesario */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../image/image_home/gato.gif), url(../image/image_home/perro.gif), url(../image/image_home/perro.gif), url(../image/image_home/gato.gif);
+    height: 120px;
+    /* Otros estilos permanecen sin cambios */
+}

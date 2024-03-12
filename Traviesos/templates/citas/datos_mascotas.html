@@ -12,10 +12,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//code.tidio.co/kczpks5iafw7sips7x6vfgjynam1qzs0.js" async></script>
     <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_mascotas.css' %}">
     <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
     <title>Mascotas</title>
 </head>
-<body class="bg-orange-100">
+<body class="bg-orange-50">
     <header>
         <nav class="bg-orange-200 container-fluid">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,6 +36,7 @@
             </div>
         </nav>
     </header>
+    <div class="basic-corgi-mode"></div>
     <main class="content p-8 ml-64">
         <div class="flex">
             <aside class="sidebar bg-orange-200 text-black h-screen fixed top-0 left-0 overflow-y-auto">
@@ -47,7 +49,7 @@
                 </div>
             </aside>
             <div class="container" >
-                <form method="post" action="" style="margin-left: 300px;"><br><br><br>
+                <form method="post" action="" style="margin-left: 300px;">
                     {% csrf_token %}
                     <div class="row mb-3">
                         <h1 class="mb-2 fs-5 text-center p-2 font-semibold"> ¡Hola {{ user.username }} agrega a tu mascota!</h1><br><br><br><br>
