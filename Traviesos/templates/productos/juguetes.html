@@ -60,9 +60,10 @@ crossorigin="anonymous"></script>
       </div>
       </div>
 
-        <form method="post">
+        <form action="{% url 'carts:add' %}" method="post">
+        {% csrf_token %}
         <input type="hidden" name="product_id" value="{{ producto.id }}">
-        <button type="submit" class="btn btn-warning">Agregar al carrito</button>
+        <button type="submit" class="btn btn-warning">Agregar al carrito</a></button>
         </form>
         <div class="mt-2">
           <a class="btn btn-outline-success" href="">Comprar <i class="bi bi-shop-window"></i></a>
