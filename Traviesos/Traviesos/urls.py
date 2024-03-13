@@ -25,6 +25,6 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('perfil/', views.perfil, name='perfil'),
     path('datos/', views.registro_informacion_adicional, name='datos'),
-    path('comentarios/', pqrs_views.coment, name='coment'),
+    path('tus_pqrs/', pqrs_views.perfil_pqrs, name='perfil_pqrs'),
     
 ]

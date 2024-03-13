@@ -19,32 +19,28 @@
 <body class="bg-orange-50">
     <header>
         <nav class="bg-orange-200 container-fluid">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center space-x-2"></div>
-                    <div class="flex items-center">
-                        <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
-                        <div class="hidden md:block">
-                            <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
-                                <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a></li>
-                                <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a></li>
-                                <li><a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+              <div class="flex items-center space-x-2">
+              </div>
+              <div class="flex items-center">
+                <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
+              </div>
             </div>
+          </div>
         </nav>
-    </header>
-    <div class="basic-corgi-mode"></div>
-    <main class="content p-8 ml-64">
+      </header>
+      <div class="basic-corgi-mode"></div>
+    <body class="bg-orange-50">
         <div class="flex">
             <aside class="sidebar bg-orange-200 text-black h-screen fixed top-0 left-0 overflow-y-auto">
-                <div class="p-4"><br><br>
-                    <ul class="mt-4">
+                <div class="p-4">
+                    <h1 class="fs-5 font-semibold">¡Bienvenido a tu perfil, {{ user.username }}!</h1>
+                    <ul class="mt-4"><br><br>
                         <li class="py-2 hover:bg-orange-300"> <a href="{% url 'perfil' %}"><i class="bi bi-person-fill-gear"></i><b> Tus Datos</b></a></li>
                         <li class="py-2 hover:bg-orange-300"> <a href="{% url 'agregar_mascotas' %}"><i class="fa-solid fa-dog"></i><b>  Tus mascotas</b></a></li>
                         <li class="py-2 hover:bg-orange-300"><a href="{% url 'ver_citas' %}"><i class="fa-sharp fa-solid fa-clipboard-list"></i> <b> Tus citas</a></li>
+                        <li class="py-2 hover:bg-orange-300"><a href="{% url 'perfil_pqrs' %}"><i class="fa-solid fa-headset"></i>  tus PQRS</a></li>
                     </ul>
                 </div>
             </aside>

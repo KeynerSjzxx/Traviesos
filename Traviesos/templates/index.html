@@ -36,7 +36,6 @@
                   <div class="mt-12">
                   <a href="{% url 'pqrs' %}" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-person-lines-fill"></i> PQRS</a><br><br>
                   <a href="{% url 'carts:cart'  %}" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-basket"></i> Carrito de compras</a><br><br>
-                  <a href="{% url 'coment' %}" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i class="bi bi-pen"></i> Comentarios</a>
                   </div>
                 </div>
               </div>
@@ -89,7 +88,7 @@
       <div class="bg-white shadow-md rounded-md flex flex-col items-center p-2">
         <a href="{% url 'juguetes' %}" class="">
           <h3 class="fs-5 my-2 text-center">Juguetes</h3>
-          <img class="h-44 my-2 " src="{% static 'image/image_productos/accesorios/jugando.jpg'%}" alt="" >
+          <img class="h-44 my-2 rounded-md" src="{% static 'image/image_productos/accesorios/jugando.jpg'%}" alt="" >
         </a>
       </div>
       <div class="bg-white shadow-md rounded-md flex flex-col items-center p-2">
@@ -108,63 +107,52 @@
   </section>
   <section id="gestion-citas">
     <h1 class="text-center fs-3 p-4">Agendar cita</h1>
-    <div class="grid grid-cols-2">
-      <div class="mx-24">
-        <img class="rounded-md shadow-md" src="{% static 'image/image_home/banner_mascota.jpg'%}" alt="">
-      </div>
-      <div class="mt-32 text-center">
-        <a class="p-3 rounded-md border-1 border-orange-200 hover:bg-orange-200 " href="{% url 'citas' %}">solicita tu cita <i class="bi bi-list-check"></i></a>
-      </div>
-    </div>
-  </section>
-  <section class="mt-12 bg-gray-100 py-16" id="comentarios">
-    <div class="container">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Comentarios</h2>
-            <div>
-                <div class="space-y-2">
-                    <div class="grid grid-cols-3 gap-4 bg-sky-950 rounded-xl shadow-lg p-4">
-                        <div class="col-span-1">
-                            <img class="h-20 w-20 shadow-gray-300 shadow-md rounded-full mx-auto" src="https://scotiabankfiles.azureedge.net/scotiabank-chile/iniciativa-mujeres/mujer.png" alt="Cliente 1">
-                        </div>
-                        <div class="col-span-2">
-                            <h3 class="text-lg leading-6 font-medium text-gray-200">Andrea</h3>
-                            <p class="text-sm text-gray-300">Compré una computadora y estoy muy satisfecha con la calidad del producto y la atención al cliente.</p>
-                        </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4 bg-sky-800 rounded-xl shadow-lg p-4">
-                            <div class="col-span-1">
-                                <img class="h-20 w-20 shadow-gray-600 shadow-md rounded-full mx-auto" src="https://www.labsaenzrenauld.com/wp-content/uploads/2020/10/Perfil-hombre-ba%CC%81sico_738242395.jpg" alt="Cliente 2">
-                        </div>
-                        <div class="col-span-2">
-                                <h3 class="text-lg leading-6 font-medium text-gray-200">Carlos</h3>
-                                <p class="text-sm text-white">Recomiendo esta tienda a todos. El servicio es excelente y los productos son de alta calidad.</p>
-                        </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4 bg-sky-100 rounded-xl shadow-lg p-4">
-                            <div class="col-span-1">
-                                <img class="h-20 w-20 shadow-gray-800 shadow-md rounded-full mx-auto" src="https://www.joseivanaguilar.com/wp-content/uploads/2021/03/mujer.jpg" alt="Cliente 3">
-                            </div>
-                            <div class="col-span-2">
-                                <h3 class="text-lg leading-6 font-medium text-gray-800">Karla</h3>
-                                <p class="text-sm text-gray-700">El servicio que recibí en esta página web fue excepcional. El equipo de atención al cliente fue amable, eficiente y muy servicial.</p>
-                            </div>
-                        </div>
-                </div>
-            </div>
+    <div class="flex justify-center">
+        <div class="flex items-end rounded-md relative">
+            <img src="{% static 'image/image_home/banner_mascota.jpg'%}" alt="Imagen de mascotas" class="w-96 h-96 object-cover rounded-md">
+            <a href="{% url 'citas' %}" class="cursor-pointer p-3 bg-orange-100 rounded-md border-2 border-orange-200 shadow-md hover-shadow-lg hover:bg-orange-300 flex items-center absolute -bottom-14 left-1/2 transform -translate-y-1/2 -translate-x-1/2 gap-1.5 font-medium">
+                <i class="fa-solid fa-clipboard"></i>
+                <p>
+                    Solicita tu cita
+                </p>
+            </a>
         </div>
     </div>
-  </section>
+</section>
 </main>
-<footer class="mt-6 bg-slate-900">
-  
-  <div class="my-8 text-white text-center space-x-6">
-    
-    <a href=""><i class="bi bi-facebook"></i></a>
-    <a href=""><i class="bi bi-instagram"></i></a>
-    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-    <p class="text-white">Todos los derechos reservados © 2023 Taviesos</p>
+<footer>
+  <div class="bg-gray-800">
+    <div class="mt-12 d-flex justify-content-between align-items-center mx-36">
+      <div class="text-white py-36 w-96">
+        <h1 class="font-bold fs-4">Visión:</h1>
+        <p class="text-justify ">Descubre un paraíso para consentir a tus peludos amigos. Encontrarás juguetes, accesorios, ropa, muebles y servicios de spa. ¡Haz que tus mascotas se sientan mimadas y amadas como se merecen! 🐾</p>
+      </div>
+      <div class="text-white py-24">
+        <div class="grid grid-cols-2 gap-4 text-justify">
+          <div class="px-24">
+            <h1 class="font-bold fs-4">Contacto:</h1>
+            <p>Centro comercial de Atlantis Piso - 1 local - 02</p>
+            <p>Cel: 312 518 1646 / 301 132 1381</p>
+          </div>
+          <div class="px-24">
+            <h1 class="font-bold fs-4">Horario:</h1>
+            <p>Lunes-Viernes: _____8:00 a 18:00</p>
+            <p>Sábado: ______9:00 a 18:00</p>
+            <p>Domingo: ______10:00 a 16:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-orange-200">
+    <div class="font-bold text-center space-x-6 py-8">
+      <a href=""><i class="bi bi-facebook"></i></a>
+      <a href=""><i class="bi bi-instagram"></i></a>
+      <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+      <p class="font-bold">Todos los derechos reservados © 2023 Taviesos</p>
+    </div>
   </div>
 </footer>
+
 </body>
 </html>

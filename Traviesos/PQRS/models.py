@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth.models import User
 
 class Tipo_pqrs(models.Model):
     id = models.AutoField(primary_key=True)
@@ -30,13 +31,15 @@ class PQRS(models.Model):
         db_comment="Fecha de creacion",
         verbose_name="Fecha de creacion"
     )
-    Nombre = models.CharField(max_length=100, verbose_name='Nombre Usuario')
+    Nombre = models.ForeignKey(User, on_delete=models.CASCADE)
     Descripcion = models.TextField(max_length=500, verbose_name='Descripcion')
     Respuesta = models.CharField(max_length=150, blank=True, null=True)
     Estado_pqrs = models.ForeignKey(Estado, on_delete=models.CASCADE, default=1)
     
     def __str__(self):
         return self.Nombre
+    def __str__(self):
+        return f"{self.Nombre.username} - {self.create_at}"
 
 # Esta función se ejecutará después de que se guarde una instancia de PQRS
 @receiver(post_save, sender=PQRS)

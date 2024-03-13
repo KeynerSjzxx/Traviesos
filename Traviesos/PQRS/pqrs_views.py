@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib import messages
 from .models import Tipo_pqrs
 from .forms import FormAgendarPqrs
-from django.contrib.auth.decorators import login_required  # Importación añadida
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .models import PQRS
 
 def formulario_pqrs(request):
     if request.method == 'POST':
@@ -36,5 +38,8 @@ def mostrar_formulario(request):
 def pqrs(request):
     return render(request, 'PQRS/form.html', {'user': request.user})
 
-def coment(request):
-    return render(request, 'PQRS/coment.html')
+@login_required
+def perfil_pqrs(request):
+    usuario = User.objects.get(username=request.user.username)
+    pqrs_usuario = PQRS.objects.filter(Nombre=usuario)
+    return render(request, 'PQRS/PQRS_cliente.html', {'usuario': usuario, 'pqrs_usuario': pqrs_usuario})

@@ -44,26 +44,26 @@
                     </div>
                 </aside>
     <main class="content p-8 ">
-        <section id="datos">
-            {% if informacion_adicional %}
-            <div class="text-end">
-                <a class="border-1 border-orange-500 p-2 rounded-md text-orange-500 hover:bg-orange-200 hover:text-orange" href="{% url 'datos' %}">Actualiza tus datos <i class="fa-solid fa-file-pen"></i></a>
-            </div>
-            <div class="mt-32">
-                <h1 class="h2">Tus datos, {{user.username}}</h1><br>
-                <b><p class="form-label">Nombre Completo:</b> {{ informacion_adicional.Nombre_completo }}</p><br>
-                <b><p class="form-label">Fecha de Nacimiento:</b> {{ informacion_adicional.Fecha_nacimiento }}</p><br>
-                <b><p class="form-label">Correo:</b> {{ informacion_adicional.Correo }}</p><br>
-                <b><p class="form-label">Número Telefónico:</b> {{ informacion_adicional.Numero_telefonico }}</p><br>
-                <b><p class="form-label">Dirección de Residencia:</b> {{ informacion_adicional.Dirreccion_recidencia }}</p><br>
-                <b><p class="form-label">Número de Tarjeta:</b> {{ informacion_adicional.Numero_tarjeta }}</p><br>
-                <b><p class="form-label">CVV:</b> {{ informacion_adicional.cvv }}</p><br>
-            </div>
-        {% else %}
-            <a class="border-1 border-blue-500 p-2 rounded-md text-blue-500 hover:bg-blue-500 hover:text-white" href="{% url 'datos' %}">Agregar datos <i class="fa-regular fa-user"></i></a>
-            <p class="mt-10">Todavía no has guardado tus datos.</p>
-        {% endif %}
-        </section>
+
+        <h2>Tus PQRS:</h2>
+        <ul>
+            {% for pqrs in pqrs_usuario %}
+                <li>
+                    <strong>Tipo PQRS:</strong> {{ pqrs.Tipo_pqrs }}<br>
+                    <strong>Fecha de Creación:</strong> {{ pqrs.create_at }}<br>
+                    <strong>Descripción:</strong> {{ pqrs.Descripcion }}<br>
+                    {% if pqrs.Respuesta %}
+                        <strong>Respuesta:</strong> {{ pqrs.Respuesta }}<br>
+                    {% endif %}
+                    <strong>Estado:</strong> {{ pqrs.Estado_pqrs }}<br>
+                </li>
+            {% empty %}
+                <li>No tienes PQRS registradas.</li>
+            {% endfor %}
+        </ul>
+    
+        <!-- Aquí puedes agregar más contenido según tus necesidades -->
+    
     </main>
         </div>
     </body>
