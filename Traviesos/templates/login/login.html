@@ -14,39 +14,43 @@ crossorigin="anonymous"></script>
 <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
 <title>Traviesos</title>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-200">
+<body class="">
     <main>
-        <div class="container-sm">
-            <h2 class="text-center fs-4 mt-12">Inicio de sesión</h2>
-            <div class="round mt-12 mx-96">
+        <div class="square bg-orange-100 w-36 h-36 absolute top-1/2 rotate-45 rounded left-20"></div>
+        <div class="square bg-orange-100 w-12 h-12 absolute bottom-1/4 rotate-45 rounded left-20"></div>
+        <div class="square bg-orange-100 w-12 h-12 absolute bottom-1/3 rotate-45 rounded left-56"></div>
+        <div class="square bg-orange-100 w-12 h-12 absolute bottom-1/2 rotate-45 rounded left-56"></div>
+
+        <div class="square bg-orange-100 w-36 h-36 absolute top-1/3 rotate-45 rounded right-20"></div>
+        <div class="square bg-orange-100 w-12 h-12 absolute bottom-1/3 rotate-45 rounded right-20"></div>
+        <div class="square bg-orange-100 w-12 h-12 absolute top-1/5 rotate-45 rounded right-56"></div>
+        <div class="square bg-orange-100 w-12 h-12 absolute top-1/2 rotate-45 rounded right-56"></div>
+        <div class="bg-orange-50 grid grid-cols-2 items-center mt-72 border-2 border-orange-200 rounded-md mx-96 shadow-md px-12">
+            <div>
+                <h1 class="fs-3">Inicia sesión</h1>
+                <p class="mt-2">para continuar el proceso</p>
+            </div>
+            <div class="">
                 <form method="post">
-                    <div class="form-login py-16">
-                        
-                    </div>
-                <div class="px-4 bg-slate-800 text-white">
                     {% csrf_token %}
                     <div class="py-4">
                         <label for="username">Usuario</label><br>
-                        <input type="text" name="username" class="bg-transparent border-2 border-gray-200 h-10 w-72 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600">
+                        <input type="text" name="username" class="mt-2 border-2 border-orange-200 px-2 py-1 rounded-md focus:outline-none focus:ring-orange-400 focus:border-orange-400 w-1/2">
                     </div>
                     <div>
                         <label for="password">Contraseña</label><br>
-                        <input type="password" name="password" class="bg-transparent border-2 border-gray-200 h-10 w-72 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600">
+                        <input type="password" name="password" class="mt-2 border-2 border-orange-200 px-2 py-1 rounded-md focus:outline-none focus:ring-orange-400 focus:border-orange-400 w-1/2">
                     </div>
                     <div class="mt-2">
-                        <a class="text-sm text-blue-500 hover:underline" href="{% url 'registro' %}">Crear cuenta <i class="bi bi-person-add"></i></a><br>
-                        <a class="text-sm text-blue-500 hover:underline" href="{% url 'registro' %}"> Recupera tu contraseña</a>
+                        <a class="hover:underline" href="{% url 'registro' %}">Crear cuenta <i class="bi bi-person-add"></i></a><br>
+                        <a class="hover:underline" href="{% url 'registro' %}"> Recupera tu contraseña</a>
+                        <div>
+                            <button type="submit" class="bg-orange-100 px-4 py-1 border-2 border-orange-200 my-2 rounded-md hover:bg-orange-200 hover:shadow-md">Iniciar sesion</button>
+                        </div>
                     </div>
-                    <div class="text-end py-4">
-                        <button type="submit" class="text-end p-2 border-gray-100 border-1 text-gray-100 rounded-md hover:bg-blue-500 hover:text-white">Iniciar sesion</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 </main>
 </body>
 </html>
-
-
-
