@@ -52,16 +52,16 @@ INSTALLED_APPS = [
     'carts',
 ]
 JAZZMIN_UI_TWEAKS = {
-    "theme": "darkly",
+    "theme": "minty",
 }
 
 JAZZMIN_SETTINGS = {
     'site_title' : "Traviesos",
     'site_header' : "Admin",
     'site_brand' : "Traviesos",
-    'site_logo' : "image/image_home/traviesos.jpeg",
+    'site_logo' : "image/image_home/logo_admin.png",
     'site_favicon' : "image/image_home/favicon.ico",
-    'welcome_sign' : "Bienvenio a Traviesos",
+    'welcome_sign' : "Bienvenidos a Traviesos",
     'copyright' : 'Taviesos'
 }
 

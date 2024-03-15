@@ -73,11 +73,11 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="fecha_cita" class="form-label"><b>Fecha de la cita</b></label>
-          <input type="date" name="{{ form.Fecha.name }}" class="form-control" required value="{{ form.Fecha.value | date:'Y-m-d' }}">
+          <input type="date" name="{{ form.Fecha.name }}" class="form-control" min="2024-03-14" max="2024-12-30" required value="{{ form.Fecha.value | date:'Y-m-d' }}">
       </div>
           <div class="col-md-6">
               <label for="hora_cita" class="form-label"><b>Hora de la cita</b></label>
-              <input type="time" name="{{form.Hora.name}}" class="form-control" min="09:00" max="19:00" required value="{{form.Hora.value}}">
+              <input type="time" name="{{ orm.Hora.name}}" class="form-control" min="08:00" max="18:00" required value="{{form.Hora.value}}">
           </div>
       </div><br>
       <div class="row mb-3">
