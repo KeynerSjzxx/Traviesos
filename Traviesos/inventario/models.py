@@ -1,17 +1,5 @@
 from django.db import models
 
-class Marca(models.Model):
-    Nombre_marca = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.Nombre_marca
-    
-    class Meta:
-        verbose_name = 'Marca'
-        verbose_name_plural = 'Marcas'
-        db_table = 'marcas'
-        ordering = ['id']
-
 class Categoria(models.Model):
     Nombre_categoria = models.CharField(max_length=30)
 
@@ -39,10 +27,9 @@ class Compras(models.Model):
 class Producto(models.Model):
     Nombre_producto = models.CharField(max_length=30)
     Precio_producto = models.DecimalField(max_digits=10, decimal_places=2)
-    Stock_producto = models.CharField(max_length=100)
+    Stock_producto = models.IntegerField()
     Imagen_producto = models.CharField(max_length=100)
     Descripcion_producto = models.CharField(max_length=50)
-    Id_marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
     Id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     def __str__(self):

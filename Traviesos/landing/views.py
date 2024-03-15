@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -7,6 +7,7 @@ from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
 from django.views.decorators.csrf import csrf_exempt
 from inventario.models import Producto
+from django.http import HttpResponse
 
 def cart_view(request):
     
@@ -83,4 +84,23 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, 'Sesión finalizada')
-    return redirect('index')    
+    return redirect('index')
+
+def procesar_compra(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    if request.method == 'POST':
+        cantidad_comprada = int(request.POST.get('cantidad', 0))
+        if cantidad_comprada > 0 and cantidad_comprada <= producto.Stock_producto:
+            producto.Stock_producto -= cantidad_comprada
+            producto.save()
+            # Aquí podrías hacer otras operaciones relacionadas con la compra, como guardar información sobre la compra en otra tabla, etc.
+            return redirect('pagina_de_confirmacion')  # Redirigir a la página de confirmación de compra o a donde desees
+        else:
+            # Manejar el caso en que la cantidad comprada sea inválida
+            return render(request, 'error.html', {'mensaje': 'Cantidad inválida'})
+    else:
+        # Manejar el caso en que la solicitud no sea de tipo POST
+        return render(request, 'error.html', {'mensaje': 'Solicitud no válida'})
+    
+def pagina_de_confirmacion(request):
+    return render(request, 'productos/confirmacion.html')

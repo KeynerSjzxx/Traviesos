@@ -66,9 +66,37 @@ crossorigin="anonymous"></script>
         <button type="submit" class="btn btn-warning">Agregar al carrito</a></button>
         </form>
         <div class="mt-2">
-          <a class="btn btn-outline-success" href="">Comprar <i class="bi bi-shop-window"></i></a>
+          <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#confirmarCompraModal">Comprar <i class="bi bi-shop-window"></i></a>
+          <div class="modal fade" id="confirmarCompraModal" tabindex="-1" aria-labelledby="confirmarCompraModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmarCompraModalLabel">Confirmar Compra</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h1 class="text-center fs-3">Confirmar Compra</h1>
+                      <div class="border-1 border-gray-600 mt-22"></div>
+                      <div class="text-justufy">
+                        <h1 class="font-bold mt-2">Nombre del Producto: </h1><p>{{ producto.Nombre_producto }}</p>
+                        <h1 class="font-bold mt-2">Precio:</h1><p> {{ producto.Precio_producto }}</p>
+                        <h1 class="font-bold mt-2">Descripción: </h1><p>{{ producto.Descripcion_producto }}</p>
+                        <h1 class="font-bold mt-2">Stock Disponible: </h1><p>{{ producto.Stock_producto }}</p>
+                      </div>
+                  
+                      <form action="{% url 'procesar_compra' producto.id %}" method="post">
+                          {% csrf_token %}
+                          <label for="cantidad">Cantidad:</label>
+                          <input type="number" name="cantidad" id="cantidad" min="1" max="{{ producto.Stock_producto }}" required>
+                          <button type="submit">Confirmar Compra</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
         </div>
         </div>
+        </div>
+        
     {% endfor %}
 </div>
 </div>
