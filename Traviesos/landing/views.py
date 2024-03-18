@@ -7,7 +7,7 @@ from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
 from django.views.decorators.csrf import csrf_exempt
 from inventario.models import Producto
-from django.http import HttpResponse
+from carts.utils import get_or_create_cart
 
 def cart_view(request):
     
@@ -88,9 +88,11 @@ def logout_view(request):
 
 def procesar_compra(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
+    cart = get_or_create_cart(request)
     if request.method == 'POST':
         cantidad_comprada = int(request.POST.get('cantidad', 0))
         if cantidad_comprada > 0 and cantidad_comprada <= producto.Stock_producto:
+            cart.products.remove(producto)
             producto.Stock_producto -= cantidad_comprada
             producto.save()
             # Aquí podrías hacer otras operaciones relacionadas con la compra, como guardar información sobre la compra en otra tabla, etc.

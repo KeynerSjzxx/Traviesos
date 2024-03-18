@@ -17,6 +17,6 @@ class pqrstAdmin(admin.ModelAdmin):
     list_display = ('Tipo_pqrs', 'create_at', 'Nombre', 'Descripcion', 'Respuesta', 'Estado_pqrs')
     list_editable = ('Respuesta',)
     search_fields = ('create_at',)
-    list_filter = ('Tipo_pqrs',)
+    list_filter = ('Tipo_pqrs', 'Nombre', 'Estado_pqrs',)
     list_per_page = 10
     
