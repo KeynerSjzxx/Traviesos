@@ -3,11 +3,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/7d08ee079d.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,95 +16,105 @@
     <link rel="stylesheet" href="{% static 'css/style3.css' %}">
     <link rel="stylesheet" href="{% static 'css/style_mascotas.css' %}">
     <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
-  <title>Traviesos</title>
+    <title>Traviesos</title>
 </head>
+
 <header>
-  <nav class="bg-orange-200 container-fluid">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center space-x-2">
+    <nav class="bg-orange-200 container-fluid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-2">
+                </div>
+                <div class="flex items-center">
+                    <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}"
+                            alt="Logo"></a>
+                    <div class="hidden md:block">
+                        <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
+                            <li><a href="{% url 'index' %}"
+                                    class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a>
+                            </li>
+                            <li><a href="{% url 'index' %}"
+                                    class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a>
+                            </li>
+                            <li><a href="{% url 'index' %}"
+                                    class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="flex items-center">
-          <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo"></a>
-          <div class="hidden md:block">
-            <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
-              <li><a href="{% url 'index' %}"
-                  class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a>
-              </li>
-              <li><a href="{% url 'index' %}"
-                  class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a>
-              </li>
-              <li><a href="{% url 'index' %}"
-                  class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </header>
 <div class="basic-corgi-mode"></div>
-
 <body class="bg-orange-50">
-  <div class="container"><br>
-    <h1 style="font-size: 30px;">Agendar cita</h1><br><br>
-    {% if messages %}
-    <div class="row">
-      {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-        <p>{{ message }}</p>
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    <form method="POST" action="">
-      {% csrf_token %}
-      <div class="row mb-3">
-          <div class="col-md-6">
-              <label for="{{ form.Tipo_cita.id_for_label }}" class="form-label"><b>Tipo de cita</b></label>
-              {{form.nombre_tipo}}
-          </div>
-          <div class="col-md-6">
-            <label for="{{ form.Nombre.id_for_label }}" class="form-label"><b>Mascota</b></label>
-            {{ form.Nombre }}
+    <div class="container"><br>
+        <h1 style="font-size: 30px;">Agendar cita</h1><br><br>
+        {% if messages %}
+        <div class="row">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="fecha_cita" class="form-label"><b>Fecha de la cita</b></label>
-          <input type="date" name="{{ form.Fecha.name }}" class="form-control" min="2024-03-14" max="2024-12-30" required value="{{ form.Fecha.value | date:'Y-m-d' }}">
-      </div>
-          <div class="col-md-6">
-              <label for="hora_cita" class="form-label"><b>Hora de la cita</b></label>
-              <input type="time" name="{{ orm.Hora.name}}" class="form-control" min="08:00" max="18:00" required value="{{form.Hora.value}}">
-          </div>
-      </div><br>
-      <div class="row mb-3">
-          <div class="col-md-6">
-              <label for="numero_contacto" class="form-label"><b>Número de contacto</b></label>
-              <input type="text" name="{{form.Telefono.name}}" class="form-control" maxlength="10" minlength="10" inputmode="numeric" pattern="[0-9]{10}" required value="{{form.Telefono.value}}">
-          </div>
-          <div class="col-md-6">
-              <label for="descripcion" class="form-label"><b>Descripción de la mascota</b></label>
-              <textarea class="form-control" name="{{form.descripcion.name}}"
-                  placeholder="Danos una breve descripción de la personalidad de tu mascota." cols="100" style="height: 40px" required>{{form.descripcion.value}}</textarea>
-          </div>
-      </div><br>
-      <ul class="bg-red">
-        <li><a href="{% url 'agregar_mascotas' %}" style="color: red;">Aun no tienes una mascota registrada?</a></li>
-        <li><a href="{% url 'ver_citas' %}" style="color: red;">Ver mi citas</a></li>
-      </ul>
-      <div class="d-grid gap-2"><br><br>
-          <button class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black" type="submit"
-              value="Submit"><b>Guardar</b></button>
-              <a class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black text-center" href="{% url 'ver_citas' %}">
-                <b>Volver a citas</b> <i class="fa-solid fa-arrow-rotate-left"></i>
-            </a>
-      </div>
-  </form>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="id_nombre_tipo" class="form-label"><b>Tipo de cita</b></label>
+                    {{ form.nombre_tipo }}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_Nombre" class="form-label"><b>Mascota</b></label>
+                    {{ form.Nombre }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="id_Fecha" class="form-label"><b>Fecha de la cita</b></label>
+                    <input type="date" name="{{ form.Fecha.name }}" class="form-control" min="2024-03-14"
+                        max="2024-12-30" required value="{{ form.Fecha.value | date:'Y-m-d' }}">
+                </div>
+                <div class="col-md-6">
+                    <label for="id_Hora" class="form-label"><b>Hora de la cita</b></label>
+                    <input type="time" name="{{ form.Hora.name }}" class="form-control" min="08:00" max="18:00"
+                        required value="{{ form.Hora.value }}">
+                </div>
+            </div><br>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="id_Telefono" class="form-label"><b>Número de contacto</b></label>
+                    <input type="text" name="{{ form.Telefono.name }}" class="form-control" maxlength="10"
+                    minlength="10" inputmode="numeric" pattern="[0-9]{10}" required {% if form.instance.pk %} 
+                    value="{{ form.Telefono.value }}"{% endif %}>
+                </div>
+                <div class="col-md-6">
+                    <label for="id_descripcion" class="form-label"><b>Descripción de la mascota</b></label>
+                    <textarea class="form-control" name="{{ form.descripcion.name }}"
+                        placeholder="Danos una breve descripción de la personalidad de tu mascota." cols="100"
+                        style="height: 40px"
+                        required>{{ form.descripcion.value }}</textarea>
+                </div>
+            </div><br>
+            <ul class="bg-red">
+                <li><a href="{% url 'agregar_mascotas' %}" style="color: red;">Aun no tienes una mascota
+                        registrada?</a></li>
+                <li><a href="{% url 'ver_citas' %}" style="color: red;">Ver mis citas</a></li>
+            </ul>
+            <div class="d-grid gap-2"><br><br>
+                <button class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black"
+                    type="submit" value="Submit"><b>Guardar</b></button>
+                <a class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black text-center"
+                    href="{% url 'ver_citas' %}">
+                    <b>Volver a citas</b> <i class="fa-solid fa-arrow-rotate-left"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 </body>

@@ -30,6 +30,8 @@ CORS_ALLOWED_ORIGINS = [
     '*',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://4d29-179-51-111-75.ngrok-free.app']
+
 CSRF_COOKIE_SECURE = False
 
 

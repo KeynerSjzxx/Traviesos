@@ -52,7 +52,7 @@
                         <h1 class="fs-5 font-semibold">Datos de tu mascota:</h1><br><br><br>
                         <div class="col-md-6">
                             <label for="{{ formulario.nombre.id_for_label }}" class="form-label"><b>Nombre</b></label>
-                            <input type="text" name="{{ formulario.nombre.name }}" class="form-control form-control-lg" required value="{{ formulario.nombre.value }}">
+                            <input type="text" name="{{ formulario.nombre.name }}" class="form-control form-control-lg" required value="{% if formulario.nombre.value %}{{ formulario.nombre.value }}{% endif %}">
                         </div>
                         <div class="col-md-6">
                             <label for="{{ formulario.raza.id_for_label }}" class="form-label"><b>Raza</b></label>
