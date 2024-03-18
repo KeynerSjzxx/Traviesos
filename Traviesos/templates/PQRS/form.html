@@ -1,91 +1,94 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="website icon" href="{% static 'image/image_home/home.png' %}">
-    <title>Traviesos</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <script src="https://kit.fontawesome.com/7d08ee079d.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//code.tidio.co/kczpks5iafw7sips7x6vfgjynam1qzs0.js" async></script>
+  <link rel="stylesheet" href="{% static 'css/style3.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style_pqrs.css' %}">
+  <link rel="website icon" href="{% static 'image/image_home/home.png' %}" />
+  <title>Traviesos</title>
 </head>
+
 <header>
-    <nav class="bg-orange-200 container-fluid">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center space-x-2">
-                    <input type="text"
-                        class="flex-grow px-6 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-300"
-                        placeholder="¿Qué deseas buscar?">
-                    <span id="icon-search"
-                        class="px-3 py-2 text-white bg-orange-300 rounded-md hover:bg-orange-200 cursor-pointer"><i
-                            class="bi bi-search"></i></span>
-                    <a href="carrito.html" class="text-gray-600 hover:text-gray-800 px-2 fs-5"><i
-                            class="bi bi-cart-check-fill"></i></a>
-                </div>
-                <div class="flex items-center">
-                    <a href="{% url 'index' %}"><img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}"
-                            alt="Logo"></a>
-                    <div class="hidden md:block">
-                        <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
-                            <li><a href="{% url 'index' %}"
-                                    class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a>
-                            </li>
-                            <li><a href="{% url 'index' %}"
-                                    class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a>
-                            </li>
-                            <li><a href="{% url 'index' %}"
-                                    class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <nav class="bg-orange-200 container-fluid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-2"></div>
+        <div class="flex items-center">
+          <a href="{% url 'index' %}">
+            <img class="h-8 w-8" src="{% static 'image/image_home/home.png'%}" alt="Logo" />
+          </a>
+          <div class="hidden md:block">
+            <ul class="flex space-x-4 font-bold fs-5 px-4 sm:">
+              <li>
+                <a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Accesorios</a>
+              </li>
+              <li>
+                <a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Alimentos</a>
+              </li>
+              <li>
+                <a href="{% url 'index' %}" class="text-gray-600 hover:bg-orange-300 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Comentarios</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-</header>
-
-<body class="bg-orange-100">
-
-    <div class="container">
-        {% if messages %}
-        {% endif %}
-
-        <form method="POST" class="max-w-md mx-auto p-4 bg-white rounded shadow mt-4">
-            {% csrf_token %}
-            <div class="mb-4">
-                <label for="{{ form.Tipo_pqrs.id }}" class="form-label">Tipo de PQRS</label>
-                {{ form.Tipo_pqrs }}
-                <p class="mt-2 text-xs text-red-500">Por favor, seleccione el tipo de PQRS.</p>
-            </div>
-            
-            <div class="mb-4">
-                <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
-                <div class="mt-1 relative">
-                    <textarea
-                        class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        name="descripcion" required></textarea>
-                    <span class="absolute right-2 top-2 text-gray-500">
-                        <i class="bi bi-chat-left-fill"></i>
-                    </span>
-                </div>
-                <p class="mt-2 text-xs text-red-500">Este campo es obligatorio.</p>
-            </div>
-
-            <div class="flex justify-center">
-                <button type="submit" name="generar"
-                    class="px-4 py-2 border-blue-500 border-1 rounded hover:bg-blue-500 hover:text-white">Enviar</button>
-            </div>
-        </form>
+      </div>
     </div>
+  </nav>
+  <div class="basic-corgi-mode-pqrs"></div>
+</header>
+<body class="bg-orange-50">
+  <div class="container">
+    <h1 style="font-size: 30px" class="text-center">Registra tu PQRS</h1>
+    <br /><br />
+    {% if messages %}
+    <div class="row">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+        <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="d-flex justify-content-center align-items-center"> <!-- Agregado contenedor para centrar contenido -->
+      <form method="POST">
+        {% csrf_token %}
+        <div class="row mb-3">
+          <div class="col-md-14">
+            <label for="id_Tipo_pqrs" class="form-label"><b>Tipo de PQRS</b></label>
+            {{ form.Tipo_pqrs }}
+          </div>
+          
+          <div class="col-md-14"><br />
+            <label for="id_Descripcion" class="form-label"><b>Descripción</b></label>
+            <textarea class="form-control" name="{{ form.Descripcion.name }}" placeholder="Danos una breve descripción." cols="100" style="height: 100px" required>{{ form.Descripcion.value }}</textarea>
+          </div>
+          <input type="hidden" for="id_Descripcion" name="Nombre" value="{{ user.id }}"></input>
+        </div>
+        <br />
+        <ul class="bg-red">
+          <li>
+            <a href="{% url 'perfil_pqrs' %}" style="color: red">Ver mis PQRS</a>
+          </li>
+        </ul>
+        <div class="d-grid gap-1">
+          <br /><br />
+          <button class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black" type="submit" value="Submit"><b>Guardar</b></button>
+          <a class="p-2 border-2 border-black rounded-md hover:bg-orange-300 hover:text-black text-center" href="{% url 'pqrs' %}"><b>Volver a pqrs</b> <i class="fa-solid fa-arrow-rotate-left"></i></a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
+
 
 </html>
