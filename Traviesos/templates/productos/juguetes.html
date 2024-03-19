@@ -71,7 +71,7 @@ crossorigin="anonymous"></script>
       </div>
       <form action="{% url 'carts:add_to_cart' producto.id %}" method="post">
         {% csrf_token %}
-        <button type="submit">Agregar al carrito</button>
+        <button class="mt-4 bg-orange-200 border-1 border-orange-300 hover:bg-orange-300 w-full h-10 rounded-md" type="submit">Agregar al carrito</button>
       </form>
        
       <div class="mt-2">

@@ -55,69 +55,70 @@ crossorigin="anonymous"></script>
   </div>
     </nav>
   </header>
-<main class="container my-2 text-justify mx-auto flex-grow">
-<div>
-    <div class="mt-4 grid grid-cols-4 gap-4">
-    {% for producto in productos %}
-      <div class="text-center border-1 p-6 rounded-md">
-      <h1 class="fs-5">{{ producto.Nombre_producto }}</h1>
-      <div class="grid grid-cols-2">
-      <div>
-      <img class="w-32 border-1 my-2" src="{{ producto.Imagen_producto }}" alt="{{ producto.Nombre_producto }}">
-      </div>
-      <div>
-      <p class="my-2 text-left text-gray-500">{{ producto.Descripcion_producto }}</p>
-      </div>
-      </div>
-
-        <form action="{% url 'carts:add' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="product_id" value="{{ producto.id }}">
-        <button type="submit" class="btn btn-warning">Agregar al carrito</a></button>
-        </form>
-        <div class="mt-2">
-          <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#confirmarCompraModal">Comprar <i class="bi bi-shop-window"></i></a>
-          <div class="modal fade" id="confirmarCompraModal" tabindex="-1" aria-labelledby="confirmarCompraModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close text-black fs-4" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle"></i></button>
+  <main class="container my-2 text-justify mx-auto flex-grow">
+    <div>
+        <div class="mt-4 grid grid-cols-4 gap-4">
+        {% for producto in productos %}
+          <div class="text-center border-1 p-6 rounded-md">
+          <h1 class="fs-5">{{ producto.Nombre_producto }}</h1>
+          <div class="grid grid-cols-2">
+          <div>
+          <img class="w-32 border-1 my-2" src="{{ producto.Imagen_producto }}" alt="{{ producto.Nombre_producto }}">
+          </div>
+          <div>
+          <p class="my-2 text-left text-gray-500">{{ producto.Descripcion_producto }}</p>
+          </div>
+          </div>
+          <form action="{% url 'carts:add_to_cart' producto.id %}" method="post">
+            {% csrf_token %}
+            <button class="mt-4 bg-orange-200 border-1 border-orange-300 hover:bg-orange-300 w-full h-10 rounded-md" type="submit">Agregar al carrito</button>
+          </form>
+           
+          <div class="mt-2">
+            <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#confirmarCompraModal">Comprar <i class="bi bi-shop-window"></i></a>
+            <div class="modal fade" id="confirmarCompraModal" tabindex="-1" aria-labelledby="confirmarCompraModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close text-black fs-4" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <h1 class="text-center fs-3">Confirmar Compra</h1>
+                            <div class="border-1 border-gray-600 mt-22"></div>
+                            <div class="text-justufy">
+                                <div class="flex space-x-2 mt-4">
+                                    <h1 class="font-bold">Nombre del Producto: </h1><p>{{ producto.Nombre_producto }}</p>
+                                </div>
+                                <div class="flex space-x-2 mt-4">
+                                    <h1 class="font-bold">Precio:</h1><p> {{ producto.Precio_producto }}</p>
+                                </div>
+                                <div class="flex space-x-2 mt-4">
+                                    <h1 class="font-bold">Descripción: </h1><p>{{ producto.Descripcion_producto }}</p>
+                                </div>
+                            </div>
+                            <div class="text-justufy mt-4">
+                                <form class="" action="{% url 'procesar_compra' producto.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="text-start">
+                                        <label class="font-bold" for="cantidad">Cantidad:</label>
+                                        <input class="w-52 h-8" type="number" name="cantidad" id="cantidad" placeholder="Cantidad Disponible {{ producto.Stock_producto }}" min="1" max="{{ producto.Stock_producto|add:'0' }}" required>
+                                    </div>
+                                    <button class="mt-4 bg-orange-200 border-1 border-orange-300 hover:bg-orange-300 w-full h-10 rounded-md"type="submit">Confirmar Compra</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      <h1 class="text-center fs-3">Confirmar Compra</h1>
-                      <div class="border-1 border-gray-600 mt-22"></div>
-                      <div class="text-justufy">
-                      <div class="flex space-x-2 mt-4">
-                        <h1 class="font-bold">Nombre del Producto: </h1><p>{{ producto.Nombre_producto }}</p>
-                      </div>
-                      <div class="flex space-x-2 mt-4">
-                      <h1 class="font-bold">Precio:</h1><p> {{ producto.Precio_producto }}</p>
-                      </div>
-                      <div class="flex space-x-2 mt-4">
-                        <h1 class="font-bold">Descripción: </h1><p>{{ producto.Descripcion_producto }}</p>
-                      </div>
-                      </div>
-                      <div class="text-justufy mt-4">
-                      <form class="" action="{% url 'procesar_compra' producto.id %}" method="post">
-                          {% csrf_token %}
-                          <div class="text-start">
-                          <label class="font-bold" for="cantidad">Cantidad:</label>
-                          <input class="w-52 h-8" type="number" name="cantidad" id="cantidad" placeholder="Cantidad Disponible {{ producto.Stock_producto }}" min="1" max="{{ producto.Stock_producto }}" required>
-                          </div>
-                          <button class="mt-4 bg-orange-200 border-1 border-orange-300 hover:bg-orange-300 w-full h-10 rounded-md"type="submit">Confirmar Compra</button>
-                      </form>
-                      </div>
-                      </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
         
-    {% endfor %}
-</div>
-</div>
-</main>
+            </div>
+            </div>
+            
+        {% endfor %}
+    </div>
+    </div>
+    </main>
 <footer>
   <div class="bg-slate-700">
     <div class="font-bold text-center space-x-6 py-2 text-white">
