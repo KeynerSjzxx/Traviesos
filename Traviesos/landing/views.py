@@ -27,9 +27,15 @@ def ropas_accesorios(request):
     producto = Producto.objects.filter(Id_categoria=3)
     return render(request, 'productos/ropas_accesorios.html', {'productos': producto})
 
-def index (request):
-    return render(request, 'index.html')
-
+def index(request):
+    user = request.user if request.user.is_authenticated else None
+    is_staff = False
+    
+    if user and user.is_staff:
+        is_staff = True
+    
+    return render(request, 'index.html', {'user': user, 'is_staff': is_staff})
+    
 @login_required
 def perfil(request):
     try:
@@ -42,7 +48,7 @@ def perfil(request):
 @login_required
 def compra_perfil(request):
     usuario = User.objects.get(username=request.user.username)
-    compra_usuario = compras.objects.filter(cliente=usuario)
+    compra_usuario = compras.objects.filter(Nombre=usuario)
     return render(request, 'login/perfil_compras.html', {'usuario': usuario, 'compra_usuario': compra_usuario})
 
 @login_required
@@ -85,10 +91,11 @@ def login_view(request):
             return redirect('index')
         else: 
             messages.error(request, 'Usuario o contraseña incorrectos')
-    return render(request, 'login/login.html',{
-
-    })
-    
+    user = request.user if request.user.is_authenticated else None
+    is_superadmin = False
+    if user and user.is_superuser:
+        is_superadmin = True
+    return render(request, 'login/login.html', {'is_superadmin': is_superadmin})
 def logout_view(request):
     logout(request)
     messages.success(request, 'Sesión finalizada')
@@ -105,13 +112,10 @@ def procesar_compra(request, producto_id):
 
         total = cantidad * producto.Precio_producto
 
-        # Crear registro de compra
         compra = compras.objects.create(cliente=request.user, total=total)
 
-        # Crear registro de unidad de compra
         unidades_compras.objects.create(compra=compra, producto=producto, cantidad=cantidad)
 
-        # Actualizar stock del producto
         producto.Stock_producto -= cantidad
         producto.save()
 

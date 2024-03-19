@@ -3,6 +3,7 @@ from django.urls import path, include
 from landing import views
 from gestion_citas import citas_views
 from PQRS import pqrs_views
+from django.contrib.auth import views as auth_views
 
 app_name = 'carts'
 
@@ -31,5 +32,9 @@ urlpatterns = [
     path('procesar_compra/<int:producto_id>/', views.procesar_compra, name='procesar_compra'),
     path('confirmacion_Compra/', views.pagina_de_confirmacion, name='pagina_de_confirmacion'), 
     path('producto/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
-    path('compras', views.compra_perfil, name='compra_perfil')
+    path('compras', views.compra_perfil, name='compra_perfil'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name="login/password-reset.html"), name="password_reset"),
+    path('password_reset/done', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]

@@ -39,25 +39,29 @@
                   </div>
                 </div>
               </div>
-                {% if user.is_authenticated %}
-                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fs-4 bi bi-person-fill"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><p class="text-gray-500 px-3">¡Hola, {{ user.username }}!</p></li>
-                        <li><a class="dropdown-item" href="{% url 'perfil' %}">Mi perfil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
-                    </ul>
-                {% else %}
-                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fs-4 bi bi-person-fill"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
-                        <li><a class="dropdown-item" href="{% url 'registro' %}">Crear cuenta</a></li>
-                    </ul>
-                {% endif %}          
+              {% if user.is_authenticated %}
+              <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fs-4 bi bi-person-fill"></i>
+              </button>
+              <ul class="dropdown-menu">
+                  <li><p class="text-gray-500 px-3">¡Hola, {{ user.username }}!</p></li>
+                  <li><a class="dropdown-item" href="{% url 'perfil' %}">Mi perfil</a></li>
+                  {% if is_staff %}
+                      <li><a class="dropdown-item" href="{% url 'admin:index' %}">Panel de Administración</a></li>
+                  {% endif %}
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+              </ul>
+          {% else %}
+              <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fs-4 bi bi-person-fill"></i>
+              </button>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
+                  <li><a class="dropdown-item" href="{% url 'registro' %}">Crear cuenta</a></li>
+              </ul>
+          {% endif %}
+                 
         </div>
     </nav> 
     <div class="my-32 text-center space-y-4">

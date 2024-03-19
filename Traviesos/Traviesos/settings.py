@@ -164,7 +164,7 @@ LOGIN_REDIRECT_URL = 'index'  # Puede ser el nombre de una URL en tus URLs
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 25
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'juancamilo2041@gmail.com'
+EMAIL_HOST_USER = 'juancamilo2041@gmial.com'
 EMAIL_HOST_PASSWORD = '1027525724'
