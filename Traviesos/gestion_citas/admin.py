@@ -20,7 +20,7 @@ class MacotaAdmin(admin.ModelAdmin):
     list_display = ('id','nombre', 'raza', 'peso', 'tamano', 'edad')
     list_editable = ('peso', 'tamano','edad',)
     search_fields = ('raza', 'tamano',)
-    list_filter = ('raza',)
+    list_filter = ('raza', 'tamano', 'peso', 'edad', )
     list_per_page = 10
 
 @admin.register(AgendarCita)

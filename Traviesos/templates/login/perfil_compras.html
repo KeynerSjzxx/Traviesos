@@ -44,28 +44,32 @@
                         </ul>
                     </div>
                 </aside>
-    <main class="content p-8 ">
-
-        <h2>Tus PQRS:</h2>
-        <ul>
-            {% for pqrs in pqrs_usuario %}
-                <li>
-                    <strong>Tipo PQRS:</strong> {{ pqrs.Tipo_pqrs }}<br>
-                    <strong>Fecha de Creación:</strong> {{ pqrs.create_at }}<br>
-                    <strong>Descripción:</strong> {{ pqrs.Descripcion }}<br>
-                    {% if pqrs.Respuesta %}
-                        <strong>Respuesta:</strong> {{ pqrs.Respuesta }}<br>
-                    {% endif %}
-                    <strong>Estado:</strong> {{ pqrs.Estado_pqrs }}<br>
-                </li>
-            {% empty %}
-                <li>No tienes PQRS registradas.</li>
-            {% endfor %}
-        </ul>
-    
-        <!-- Aquí puedes agregar más contenido según tus necesidades -->
-    
-    </main>
+                <main class="content p-8">
+                    <section id="datos">
+                        <div class="mt-32">
+                            <h1 class="h2">Tus compras, {{ user.username }}</h1><br>
+                            {% if compra_usuario %}
+                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                    {% for compra in compra_usuario %}
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Fecha de compra:</h5>
+                                                    <p class="card-text">{{ compra.create_at }}</p>
+                                                    <h5 class="card-title">Total:</h5>
+                                                    <p class="card-text">{{ compra.total }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <p>No has realizado ninguna compra.</p>
+                            {% endif %}
+                        </div>
+                    </section>
+                </main>
+                
         </div>
     </body>
     </html>
