@@ -7,7 +7,9 @@ from .forms import InformacionAdicionalUsuarioForm
 from .models import InformacionAdicionalUsuario
 from django.views.decorators.csrf import csrf_exempt
 from inventario.models import Producto
-from django.http import HttpResponse
+from facturacion.models import compras, unidades_compras
+from django.contrib.auth.models import User
+from carts.utils import get_or_create_cart
 
 def cart_view(request):
     
@@ -36,6 +38,12 @@ def perfil(request):
         informacion_adicional = None
 
     return render(request, 'login/perfil.html', {'informacion_adicional': informacion_adicional})
+
+@login_required
+def compra_perfil(request):
+    usuario = User.objects.get(username=request.user.username)
+    compra_usuario = compras.objects.filter(cliente=usuario)
+    return render(request, 'login/perfil_compras.html', {'usuario': usuario, 'compra_usuario': compra_usuario})
 
 @login_required
 def registro_informacion_adicional(request):
@@ -87,20 +95,33 @@ def logout_view(request):
     return redirect('index')
 
 def procesar_compra(request, producto_id):
-    producto = get_object_or_404(Producto, pk=producto_id)
     if request.method == 'POST':
-        cantidad_comprada = int(request.POST.get('cantidad', 0))
-        if cantidad_comprada > 0 and cantidad_comprada <= producto.Stock_producto:
-            producto.Stock_producto -= cantidad_comprada
-            producto.save()
-            # Aquí podrías hacer otras operaciones relacionadas con la compra, como guardar información sobre la compra en otra tabla, etc.
-            return redirect('pagina_de_confirmacion')  # Redirigir a la página de confirmación de compra o a donde desees
-        else:
-            # Manejar el caso en que la cantidad comprada sea inválida
-            return render(request, 'error.html', {'mensaje': 'Cantidad inválida'})
+        cantidad = int(request.POST.get('cantidad'))
+        producto = Producto.objects.get(pk=producto_id)
+        
+        if cantidad <= 0 or cantidad > producto.Stock_producto:
+            messages.error(request, 'Cantidad inválida.')
+            return redirect('detalle_producto', producto_id=producto_id)
+
+        total = cantidad * producto.Precio_producto
+
+        # Crear registro de compra
+        compra = compras.objects.create(cliente=request.user, total=total)
+
+        # Crear registro de unidad de compra
+        unidades_compras.objects.create(compra=compra, producto=producto, cantidad=cantidad)
+
+        # Actualizar stock del producto
+        producto.Stock_producto -= cantidad
+        producto.save()
+
+        return redirect('pagina_de_confirmacion')
     else:
-        # Manejar el caso en que la solicitud no sea de tipo POST
-        return render(request, 'error.html', {'mensaje': 'Solicitud no válida'})
+        return redirect('index')
     
 def pagina_de_confirmacion(request):
     return render(request, 'productos/confirmacion.html')
+
+def detalle_producto(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    return render(request, 'productos/detalle.html', {'producto': producto})
