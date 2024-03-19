@@ -9,16 +9,16 @@ from django.contrib.auth.models import User
 @login_required
 def formulario_agendar(request):
     if request.method == 'POST':
-        form = FormAgendarCita(request.POST)
+        form = FormAgendarCita(request.user, request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'La cita se ha enviado exitosamente.')
-            form = FormAgendarCita()
+            form = FormAgendarCita(request.user)
         else:
             messages.error(request, 'Error al agendar cita. Verifica los datos.')
 
     else:
-        form = FormAgendarCita()
+        form = FormAgendarCita(request.user)
 
     context = {'form': form}
     return render(request, 'citas/citas.html', context)
