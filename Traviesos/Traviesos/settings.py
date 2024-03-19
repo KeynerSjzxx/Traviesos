@@ -27,6 +27,7 @@ DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = ['https://37ba-179-51-111-78.ngrok-free.app']
 
+
 ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
     '*',
