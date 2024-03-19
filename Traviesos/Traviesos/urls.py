@@ -29,5 +29,7 @@ urlpatterns = [
     path('datos/', views.registro_informacion_adicional, name='datos'),
     path('tus_pqrs/', pqrs_views.perfil_pqrs, name='perfil_pqrs'),
     path('procesar_compra/<int:producto_id>/', views.procesar_compra, name='procesar_compra'),
-    path('confirmacion_Compra/', views.pagina_de_confirmacion, name='pagina_de_confirmacion')   
+    path('confirmacion_Compra/', views.pagina_de_confirmacion, name='pagina_de_confirmacion'), 
+    path('producto/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
+    path('compras', views.compra_perfil, name='compra_perfil')
 ]

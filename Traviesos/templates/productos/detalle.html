@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Coloca aquí tus etiquetas meta, enlaces a CSS, etc. -->
+    <title>Detalle del Producto</title>
+</head>
+<body>
+    <h1>{{ producto.Nombre_producto }}</h1>
+    <p>{{ producto.Descripcion_producto }}</p>
+    <p>Precio: ${{ producto.Precio_producto }}</p>
+    <p>Stock disponible: {{ producto.Stock_producto }}</p>
+
+    <form action="{% url 'procesar_compra' producto.id %}" method="post">
+        {% csrf_token %}
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" id="cantidad" min="1" max="{{ producto.Stock_producto }}" required>
+        <button type="submit">Comprar</button>
+    </form>
+</body>
+</html>
