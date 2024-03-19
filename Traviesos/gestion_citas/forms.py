@@ -20,7 +20,11 @@ class FormAgendarCita(forms.ModelForm):
         empty_label="Seleccionar una cita",
         widget=forms.Select(attrs={'class': 'form-select'}),
     )
-     
+    
+    # Agregar el usuario actual para filtrar las mascotas
+    def __init__(self, user, *args, **kwargs):
+        super(FormAgendarCita, self).__init__(*args, **kwargs)
+        self.fields['Nombre'].queryset = Mascota.objects.filter(user=user)
 
 # Formulario para la información de la mascota
 class informacion_mascota(forms.ModelForm):
